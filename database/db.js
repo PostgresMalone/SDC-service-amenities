@@ -11,7 +11,7 @@ let amenSchema = mongoose.schema({
 		max:100,
 		unique: true
 	},
-	amenities: Object
+	amenities: Object,
 });
 
 let Amenities = mongoose.model('Amenities', amenSchema);

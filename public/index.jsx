@@ -10,6 +10,7 @@ class Amenities extends React.Component {
 		this.state = {
 			amenities: {},
 			showState: false,
+			propertyId: 0,
 		}
 	}
 
@@ -18,17 +19,20 @@ class Amenities extends React.Component {
 		$.ajax({
 			url: "/amenities",
 			method: "GET",
+			data:{id: this.state.propertyId},
 		}).done((data) => {
 			var results = JSON.parse(data);
 			that.setState({
 				amenities: data,
+				propertyId: id
 			})
 		})
 	}
 
 	ShowList() {
-		ReactDOM.render(<Images2 amenities={this.state.amenities} />, document.getElementById('amenities'));
+		ReactDOM.render(<Images2 amenities={this.state.amenities} />, document.body);
 		//another render function for the button inside Images2.
+		//check out modals
 	}
 
 	render() {

@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import Images1 from './images1';
-import Images2 from './images2';
+import Images1 from './images1.jsx';
+import Images2 from './images2.jsx';
 class Amenities extends React.Component {
 	constructor(props) {
 		super(props);
 		this.ShowList = this.ShowList.bind(this);
 		this.state = {
 			amenities: {},
+			urls: {},
 			showState: false,
 			propertyId: 0,
 		}
@@ -17,13 +18,13 @@ class Amenities extends React.Component {
 	componentDidMount() {
 		var that = this;
 		$.ajax({
-			url: "/amenities",
+			url: "/",
 			method: "GET",
-			data:{id: window.location.href.split('?')[1]},
 		}).done((data) => {
 			var results = JSON.parse(data);
 			that.setState({
-				amenities: data,
+				amenities: results.room,
+				urls: results.URLs,
 				propertyId: id
 			})
 		})
@@ -42,7 +43,7 @@ class Amenities extends React.Component {
 				<style>
 				</style>
 				<div>
-					<Images1 amenities={this.state.amenities} />
+					<Images1 amenities={this.state.amenities} images={this.state.urls}/>
 				</div>
 				<div>
 					<button onClick={() => this.showList}></button>

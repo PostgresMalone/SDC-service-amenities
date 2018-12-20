@@ -19,7 +19,7 @@ class Amenities extends React.Component {
 		$.ajax({
 			url: "/amenities",
 			method: "GET",
-			data:{id: this.state.propertyId},
+			data:{id: window.location.href.split('?')[1]},
 		}).done((data) => {
 			var results = JSON.parse(data);
 			that.setState({
@@ -38,6 +38,7 @@ class Amenities extends React.Component {
 	render() {
 		return(
 			<html>
+			<script src="./bundle.js"></script>
 				<style>
 				</style>
 				<div>

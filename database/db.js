@@ -4,7 +4,7 @@ const data = require('./data.js');
 mongoose.connect('mongodb://localhost/amenities');
 var db = mongoose.connection;
 
-let amenSchema = mongoose.schema({
+let amenSchema = mongoose.Schema({
 	id:{
 		type:Number,
 		min:1,
@@ -15,7 +15,6 @@ let amenSchema = mongoose.schema({
 });
 
 let Amenities = mongoose.model('Amenities', amenSchema);
-
 let insert = (obj) => {
 	return new Promise((resolve, reject) => {
 		Amenities.create(obj, (err, results) => {
@@ -42,20 +41,22 @@ let getOne = (id) => {
 
 db.once('open', () => {
 	console.log('connected to mongoDB amenities');
-	data.readData.then((sampleData) => {
-		for (var i = 0; i < sampleData; i++) {
-			dataSet.push(insert(sampleData[i]));
-		}
-	});
-
-	Promise.all(dataSet).then((err, results) => {
-		if(err) {
-			console.error(err);
-		} else {
-			console.log('database has been updated! ', results);
-		}
+	Amenities.deleteMany({}).then(() => {
+		console.log('previous Amenities entries deleted');
+		data.readData().then(results => {
+			for(key in results){
+				insert(results[key]).then((err, results) => {
+					if (err) {
+						return;
+					} else {
+						console.log(results[key]);
+					}
+				});
+			}
+		});
 	})
 });
 
 
 module.exports.getOne = getOne;
+module.exports.insert = insert;

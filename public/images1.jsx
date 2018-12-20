@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const images1 = (props) => (
 	<div>
@@ -8,7 +8,6 @@ const images1 = (props) => (
 				<label class="images1" for={amenity}>{amenity}</label>
 			</div>})}
 	</div>
-
 );
 
-module.exports.images1 = images1;
+export default images1;

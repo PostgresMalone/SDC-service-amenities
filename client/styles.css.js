@@ -6,17 +6,19 @@ const button = {
 
 };
 
-const essential = {
-	display: 'list-item'
-};
+const notPresent = {
+	display: 'list-item',
+	opacity: '0.5',
+	textDecoration: 'line-through',
+}
 
-const special = {
-	display: 'list-item'
+const present = {
+	display: 'list-item',
 };
 
 export default {
 	div,
 	button,
-	essential,
-	special
+	notPresent,
+	present
 }

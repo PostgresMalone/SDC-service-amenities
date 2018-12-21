@@ -43,7 +43,7 @@ class Amenities extends React.Component {
 		return(
 				<div>
 					<Images1 special={this.state.specialAmenities} essential={this.state.essentialAmenities} images={this.state.urls}/>
-					<button onClick={() => console.log(this.state)}></button>
+					<button onClick={() => console.log(this.state)}>Show All Amenities</button>
 				</div>
 			)
 	}

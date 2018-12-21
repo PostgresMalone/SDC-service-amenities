@@ -7,7 +7,6 @@ import styles from './styles.css.js';
 class Amenities extends React.Component {
 	constructor(props) {
 		super(props);
-		this.ShowList = this.ShowList.bind(this);
 		this.state = {
 			specialAmenities: {},
 			essentialAmenities: {},
@@ -33,17 +32,11 @@ class Amenities extends React.Component {
 		})
 	}
 
-	ShowList() {
-		ReactDOM.render(<Images2 amenities={this.state.essentialAmenities} />, document.body);
-		//another render function for the button inside Images2.
-		//check out modals
-	}
-
 	render() {
 		return(
 				<div>
 					<Images1 special={this.state.specialAmenities} essential={this.state.essentialAmenities} images={this.state.urls}/>
-					<button onClick={() => console.log(this.state)}>Show All Amenities</button>
+					<button type="button" data-toggle="list" data-target="#imageList">Show All Amenities</button>
 				</div>
 			)
 	}

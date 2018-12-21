@@ -1,12 +1,14 @@
 import React from 'react';
+import styles from './styles.css.js';
 
 const images2 = (props) => (
 	<div>
-		{Object.keys(props.amenities).map((amenity) => {
-			<div>
-				<img name={amenity} src={props.amenities[amenity].image}></img>
-				<label class="images1" for={amenity}>{amenity}</label>
-			</div>})}
+	<h1>Essential Amenities</h1>
+		{Object.keys(props.amenities).map((amenity) => (
+			<div style={styles.special}>
+				<img name={amenity} src={props.images[amenity]} style={styles.essential}></img>
+				<label className="essential" htmlFor={amenity}>{amenity}</label>
+			</div>))}
 	</div>
 );
 

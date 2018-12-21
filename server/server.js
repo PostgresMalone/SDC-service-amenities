@@ -7,11 +7,15 @@ const db = require('../database/db.js');
 let app = Express();
 const port = 4420;
 
-app.use(Express.static(__dirname + '../public'));
+app.use(Express.static(__dirname + '/../public'));
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
+	res.render('index');
+})
+
+app.get('/images', (req, res) => {
 	var data = {};
 	db.getURLS().then((results) => {
 		data.URLs = results;

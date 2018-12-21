@@ -29,7 +29,6 @@ for (var i = 1; i < 101; i++) {
 				'Carbon monoxide detector': !(Math.floor(Math.random()*2)),
 				'Smoke detector': !(Math.floor(Math.random()*2))
 			}
-
 		}
 	});
 }

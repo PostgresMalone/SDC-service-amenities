@@ -7,7 +7,9 @@ import styles from './styles.css.js';
 class Amenities extends React.Component {
 	constructor(props) {
 		super(props);
+		this.toggleModal = this.toggleModal.bind(this);
 		this.state = {
+			show: false,
 			specialAmenities: {},
 			essentialAmenities: {},
 			urls: {},
@@ -22,7 +24,6 @@ class Amenities extends React.Component {
 			url: "/images",
 		}).done((data) => {
 			var results = JSON.parse(data);
-			console.log(results);
 			that.setState({
 				specialAmenities: results.room[0].amenities.special,
 				essentialAmenities: results.room[0].amenities.Essential,
@@ -32,11 +33,18 @@ class Amenities extends React.Component {
 		})
 	}
 
+	toggleModal () {
+		this.setState({
+			show: !this.state.show,
+		})
+	}
+
 	render() {
 		return(
 				<div>
-					<Images1 special={this.state.specialAmenities} essential={this.state.essentialAmenities} images={this.state.urls}/>
-					<button type="button" data-toggle="list" data-target="#imageList">Show All Amenities</button>
+					<Images1 special={this.state.specialAmenities} essential={this.state.essentialAmenities} 
+					images={this.state.urls} toggle={this.toggleModal} show={this.state.show}/>
+					<button onClick={this.toggleModal}>Show All Amenities</button>
 				</div>
 			)
 	}

@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Images1 from './images1.jsx';
 import Images2 from './images2.jsx';
+import styles from './styles.css.js';
 class Amenities extends React.Component {
 	constructor(props) {
 		super(props);
-		this.ShowList = this.ShowList.bind(this);
 		this.state = {
-			amenities: {},
+			specialAmenities: {},
+			essentialAmenities: {},
 			urls: {},
 			showState: false,
 			propertyId: 0,
@@ -18,37 +19,25 @@ class Amenities extends React.Component {
 	componentDidMount() {
 		var that = this;
 		$.ajax({
-			url: "/",
-			method: "GET",
+			url: "/images",
 		}).done((data) => {
 			var results = JSON.parse(data);
+			console.log(results);
 			that.setState({
-				amenities: results.room,
-				urls: results.URLs,
-				propertyId: id
+				specialAmenities: results.room[0].amenities.special,
+				essentialAmenities: results.room[0].amenities.Essential,
+				urls: results.URLs[0],
+				propertyId: 1
 			})
 		})
 	}
 
-	ShowList() {
-		ReactDOM.render(<Images2 amenities={this.state.amenities} />, document.body);
-		//another render function for the button inside Images2.
-		//check out modals
-	}
-
 	render() {
 		return(
-			<html>
-			<script src="./bundle.js"></script>
-				<style>
-				</style>
 				<div>
-					<Images1 amenities={this.state.amenities} images={this.state.urls}/>
+					<Images1 special={this.state.specialAmenities} essential={this.state.essentialAmenities} images={this.state.urls}/>
+					<button type="button" data-toggle="list" data-target="#imageList">Show All Amenities</button>
 				</div>
-				<div>
-					<button onClick={() => this.showList}></button>
-				</div>
-			</html>
 			)
 	}
 }

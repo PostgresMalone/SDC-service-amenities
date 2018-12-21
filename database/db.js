@@ -15,6 +15,12 @@ let amenSchema = mongoose.Schema({
 });
 
 let amenURL = mongoose.Schema({
+	id:{
+		type:Number,
+		min:1,
+		max:1,
+		unique:true
+	},
 	'Self check-in': String,
 	'Pool': String,
 	'Kitchen': String,
@@ -37,6 +43,7 @@ let amenURL = mongoose.Schema({
 });
 
 var amenURLs = {
+	id: 1,
 	'Self check-in': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/self-check-in.png',
 	'Pool': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/pool.png',
 	'Kitchen': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/kitchen.png', 

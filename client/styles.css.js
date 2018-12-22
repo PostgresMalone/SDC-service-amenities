@@ -25,24 +25,30 @@ const imageList = {
   position: 'sticky',
   background: 'white',
   width: 'auto',
-  marginLeft: 'auto',
-  marginRight: 'auto',
+  margin: 'auto',
   height: 'auto',
 };
 
 
 
 const notPresent = {
+	marginRight: 'auto',
+	marginLeft: 'auto',
   display: 'list-item',
   opacity: '0.5',
   textDecoration: 'line-through',
+  textAlign: 'center'
 };
 
 const present = {
+	marginRight: 'auto',
+	marginLeft: 'auto',
   display: 'list-item',
+  textAlign: 'center'
 };
 
 const modalShow = {
+	margin:'auto',
   position: 'absolute',
   top: '100',
   left: '100',

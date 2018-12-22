@@ -9,16 +9,16 @@ const imagesDefault = (props) => {
       {Object.keys(props.special).map((amenity) => (
         props.special[amenity] 
           ? <div style={styles.initial}>
-            <label className="special" htmlFor={amenity}>{amenity}</label>
             <img style={styles.initial} name={amenity} src={props.images[amenity]}></img>
-          </div> 
+            <label className="special" htmlFor={amenity} style={styles.initial}>{amenity}</label>
+          </div>
           : null
       ))}
       {Object.keys(props.essential).map((amenity) => (
         props.essential[amenity] 
           ? <div style={styles.initial}>
-            <label className="essential" htmlFor={amenity}>{amenity}</label>
             <img style={styles.initial} name={amenity} src={props.images[amenity]}></img>
+            <label className="essential" htmlFor={amenity} style={styles.initial}>{amenity}</label>
           </div> 
           : null
       ))}

@@ -15,20 +15,14 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/images', (req, res) => {
+app.get('/:Id', (req, res) => {
   var data = {};
   db.getURLS().then((results) => {
     data.URLs = results;
-    db.getOne(1).then((results) => {
+    db.getOne(req.params.Id).then((results) => {
       data.room = results;
-      res.status(200).end(JSON.stringify(data));
+      res.end(JSON.stringify(data));
     });
-  });
-});
-
-app.get('/amenities/:Id', (req, res) => {
-  db.getOne(req.params.id).then((results) => {
-    res.status(200).end(JSON.stringify(results));
   });
 });
 

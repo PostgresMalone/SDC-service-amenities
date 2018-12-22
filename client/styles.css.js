@@ -2,12 +2,17 @@ const div = {
 
 };
 
+const imageEntry = {
+	display: 'inline-flex'
+}
+
 const initial = {
   display: 'inline-flex',
   maxHeight: '200px',
-  maxWidth: '200px',
+  maxWidth: '300px',
   height: '200px',
-  width: '200px',
+  width: '300px',
+  textAlign: 'center',
 };
 
 const button = {
@@ -59,5 +64,6 @@ export default {
   notPresent,
   present,
   imageList,
-  initial
+  initial,
+  imageEntry
 };

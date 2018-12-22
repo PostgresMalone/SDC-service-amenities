@@ -19,16 +19,17 @@ class Amenities extends React.Component {
   }
 
   componentDidMount() {
+  	var index = Math.floor(Math.random() * 100);
     var that = this;
     $.ajax({
-      url: '/images',
+      url: '/' + index.toString(),
     }).done((data) => {
       var results = JSON.parse(data);
       that.setState({
         specialAmenities: results.room[0].amenities.special,
         essentialAmenities: results.room[0].amenities.Essential,
         urls: results.URLs[0],
-        propertyId: 1
+        propertyId: index,
       });
     });
   }

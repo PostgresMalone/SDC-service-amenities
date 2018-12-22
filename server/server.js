@@ -12,24 +12,24 @@ app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
-	res.render('index');
-})
+  res.render('index');
+});
 
 app.get('/images', (req, res) => {
-	var data = {};
-	db.getURLS().then((results) => {
-		data.URLs = results;
-		db.getOne(1).then((results) => {
-			data.room = results;
-			res.status(200).end(JSON.stringify(data));
-		})
-	});
-})
+  var data = {};
+  db.getURLS().then((results) => {
+    data.URLs = results;
+    db.getOne(1).then((results) => {
+      data.room = results;
+      res.status(200).end(JSON.stringify(data));
+    });
+  });
+});
 
 app.get('/amenities/:Id', (req, res) => {
-	db.getOne(req.params.id).then((results) => {
-		res.status(200).end(JSON.stringify(results));
-	});
+  db.getOne(req.params.id).then((results) => {
+    res.status(200).end(JSON.stringify(results));
+  });
 });
 
 app.listen(port, () => console.log('server is listening at port:' + port));

@@ -2,51 +2,62 @@ const div = {
 
 };
 
+const initial = {
+  display: 'inline-flex',
+  maxHeight: '200px',
+  maxWidth: '200px',
+  height: '200px',
+  width: '200px',
+};
+
 const button = {
-	position:'fixed',
-	top: '0',
-	left: '0',
+  position: 'fixed',
+  top: '0',
+  left: '0',
 };
 
 const imageList = {
-	position:'absolute',
+  position: 'sticky',
   background: 'white',
-  width: '100%',
+  width: 'auto',
+  marginLeft: 'auto',
+  marginRight: 'auto',
   height: 'auto',
-}
+};
 
 
 
 const notPresent = {
-	display: 'list-item',
-	opacity: '0.5',
-	textDecoration: 'line-through',
+  display: 'list-item',
+  opacity: '0.5',
+  textDecoration: 'line-through',
 };
 
 const present = {
-	display: 'list-item',
+  display: 'list-item',
 };
 
 const modalShow = {
-	position: 'absolute',
+  position: 'absolute',
   top: '100',
   left: '100',
-  width:'100%',
+  width: '100%',
   height: '100%',
   background: 'rgba(0, 0, 0, 0.6)',
-	display: 'block'
+  display: 'block'
 };
 
 const modalHide = {
-	display: "none",
+  display: 'none',
 };
 
 export default {
-	modalShow,
-	modalHide,
-	div,
-	button,
-	notPresent,
-	present,
-	imageList
-}
+  modalShow,
+  modalHide,
+  div,
+  button,
+  notPresent,
+  present,
+  imageList,
+  initial
+};

@@ -18,7 +18,7 @@ for (var i = 1; i < 101; i++) {
         'Heating': !(Math.floor(Math.random() * 2)),
         'Air conditioning': !(Math.floor(Math.random() * 2)),
       },
-      Essential: {
+      essential: {
         'Wifi': !(Math.floor(Math.random() * 2)),
         'TV': !(Math.floor(Math.random() * 2)),
         'Bathroom essentials': !(Math.floor(Math.random() * 2)),

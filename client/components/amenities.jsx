@@ -4,6 +4,7 @@ import $ from 'jquery';
 import ImagesList from './imagesList.jsx';
 import ImagesDefault from './imagesDefault.jsx';
 import styles from './styles.css.js';
+
 class Amenities extends React.Component {
   constructor(props) {
     super(props);

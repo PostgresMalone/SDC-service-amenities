@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import ImagesList from './imagesList.jsx';
 import ImagesDefault from './imagesDefault.jsx';

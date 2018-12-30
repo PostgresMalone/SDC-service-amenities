@@ -12,4 +12,6 @@ describe('Amenities', () => {
 
     expect(toJson(component)).toMatchSnapshot();
   });
+
+  it()
 })

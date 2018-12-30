@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Promise = require('bluebird');
 const data = require('./data.js');
-mongoose.connect('mongodb://localhost/amenities');
+mongoose.connect('mongodb://localhost/amenities', {useNewUrlParser: true});
 var db = mongoose.connection;
 
 let amenSchema = mongoose.Schema({
@@ -116,15 +116,13 @@ let getOne = (id) => {
     });
   });
 };
-
+var dataEntries = [];
 db.once('open', () => {
   console.log('connected to mongoDB amenities');
   AmenImages.deleteMany({}).then(() => {
     initialise(amenURLs).then((err, results) => {
       if (err) {
         console.log(err);	
-      } else {
-        console.log(results);
       }
     });
   });
@@ -132,14 +130,15 @@ db.once('open', () => {
     console.log('previous Amenities entries deleted');
     data.readData().then(results => {
       for (key in results) {
-        insert(results[key]).then((err, results) => {
-          if (err) {
-            return;
-          } else {
-            console.log(results[key]);
-          }
-        });
+        dataEntries.push(insert(results[key]))
       }
+      Promise.all(dataEntries).then((err, results) => {
+        if (err) {
+          console.log(err);
+        } else {
+          db.close();
+        }
+      });
     });
   });
 });
@@ -148,3 +147,6 @@ db.once('open', () => {
 module.exports.getOne = getOne;
 module.exports.insert = insert;
 module.exports.getURLS = getURLS;
+module.exports.Amenities = Amenities;
+module.exports.AmenImages = AmenImages;
+module.exports.initialise = initialise;

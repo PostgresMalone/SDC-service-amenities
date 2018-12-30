@@ -21,9 +21,11 @@ app.get('/:Id', (req, res) => {
     data.URLs = results;
     db.getOne(req.params.Id).then((results) => {
       data.room = results;
-      res.end(JSON.stringify(data));
+      res.json(data);
     });
   });
 });
 
 app.listen(port, () => console.log('server is listening at port:' + port));
+
+module.exports.app = app;

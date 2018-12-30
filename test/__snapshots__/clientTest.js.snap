@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Amenities renders on the page 1`] = `
+<div>
+  <imagesList
+    essential={Object {}}
+    images={Object {}}
+    show={false}
+    special={Object {}}
+    toggle={[Function]}
+  />
+  <imagesDefault
+    essential={Object {}}
+    images={Object {}}
+    special={Object {}}
+  />
+  <button
+    onClick={[Function]}
+  >
+    Show All Amenities
+  </button>
+</div>
+`;

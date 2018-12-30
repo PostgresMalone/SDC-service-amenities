@@ -54,4 +54,3 @@ class Amenities extends React.Component {
 }
 
 export default Amenities;
-ReactDOM.render(<Amenities />, document.getElementById('amenities'));

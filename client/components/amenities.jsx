@@ -14,6 +14,7 @@ class Amenities extends React.Component {
       essentialAmenities: {},
       totalAmenities: {},
       toShow: 0,
+      total: 0,
       urls: {},
       showState: false,
     };
@@ -26,11 +27,18 @@ class Amenities extends React.Component {
       url: document.URL + '/amenities/'
     }).done((data) => {
       var total = Object.assign(data.room[0].amenities.special,data.room[0].amenities.essential);
+      var count = 0;
+      for (var key in total) {
+        total[key] ? count++ : null;
+      }
+      var toShow = (count < 1) ? count : Math.floor(count*0.6);
+      console.log(toShow);
       that.setState({
         specialAmenities: data.room[0].amenities.special,
         essentialAmenities: data.room[0].amenities.essential,
         totalAmenities: total,
-        toShow: Math.floor(Object.keys(total)*0.4),
+        toShow: toShow,
+        total:count,
         urls: data.URLs[0],
       });
     });
@@ -49,7 +57,7 @@ class Amenities extends React.Component {
           images={this.state.urls} toggle={this.toggleModal} show={this.state.show}/>
         <ImagesDefault total={this.state.totalAmenities} toShow={this.state.toShow}
           images={this.state.urls} />
-        <button onClick={this.toggleModal}>Show All {Object.keys(this.state.totalAmenities).length} Amenities</button>
+        <button onClick={this.toggleModal}>Show All {this.state.total} Amenities</button>
       </div>
     );
   }

@@ -14,7 +14,6 @@ class Amenities extends React.Component {
       essentialAmenities: {},
       urls: {},
       showState: false,
-      propertyId: 0,
     };
   }
 
@@ -22,13 +21,12 @@ class Amenities extends React.Component {
   	var index = Math.floor(Math.random() * 100);
     var that = this;
     $.ajax({
-      url: document.URL + index.toString()
+      url: document.URL + '/amenities/'
     }).done((data) => {
       that.setState({
         specialAmenities: data.room[0].amenities.special,
         essentialAmenities: data.room[0].amenities.essential,
         urls: data.URLs[0],
-        propertyId: index,
       });
     });
   }

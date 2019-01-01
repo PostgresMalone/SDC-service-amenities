@@ -7,7 +7,8 @@ const imagesList = (props) => {
     <div style={props.show ? styles.modalShow : styles.modalHide}>
       <section style={styles.imageList}>
         <button onClick={() => props.toggle()}>Back</button>
-        <h1 style={styles.present}>Special Amenities</h1>
+        <h1 style={styles.present}>Special to this loft</h1>
+        <p style={styles.present}>This home has these unique amenities</p>
         {Object.keys(props.special).map((amenity) => (
           props.special[amenity] 
             ? <div style={styles.special}>
@@ -18,6 +19,7 @@ const imagesList = (props) => {
             : null
         ))}
         <h1 style={styles.present}>Essential Amenities</h1>
+        <p style={styles.present}>This Airbnb Plus home comes with these amenities</p>
         {Object.keys(props.essential).map((amenity) => (
           props.essential[amenity] 
             ? <div style={styles.special}>
@@ -26,7 +28,8 @@ const imagesList = (props) => {
             </div> 
             : null
         ))}
-        <h1 style={styles.present}>Unavailable Amenities</h1>
+        <h1 style={styles.present}>Not available</h1>
+        <p style={styles.present}>This home doesn't have these amenities</p>
         {Object.keys(props.special).map((amenity) => (
           props.special[amenity] 
             ? null 

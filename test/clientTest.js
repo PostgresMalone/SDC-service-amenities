@@ -13,5 +13,29 @@ describe('Amenities', () => {
     expect(toJson(component)).toMatchSnapshot();
   });
 
-  it()
-})
+  it('Contains a button', () => {
+  	const wrapper = shallow(<Amenities />);
+    const component = wrapper.shallow();
+
+    expect(component)
+  })
+});
+
+describe('Default Image List', () => {
+	it('renders on the page', () => {
+		const wrapper = shallow(<imagesDefault />);
+		const component = wrapper.shallow();
+
+		expect(toJson(component)).toMatchSnapshot();
+	});
+});
+
+
+describe('Modal Image List', () => {
+	it('renders on the page', () => {
+		const wrapper = shallow(<imagesList />);
+		const component = wrapper.shallow();
+
+		expect(toJson(component)).toMatchSnapshot();
+	});
+});

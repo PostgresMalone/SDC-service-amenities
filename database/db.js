@@ -130,7 +130,7 @@ db.once('open', () => {
     console.log('previous Amenities entries deleted');
     data.readData().then(results => {
       for (key in results) {
-        dataEntries.push(insert(results[key]))
+        dataEntries.push(insert(results[key]));
       }
       Promise.all(dataEntries).then((err, results) => {
         if (err) {

@@ -12,9 +12,10 @@ class Amenities extends React.Component {
       show: false,
       specialAmenities: {},
       essentialAmenities: {},
+      totalAmenities: {},
+      toShow: 0,
       urls: {},
       showState: false,
-      propertyId: 0,
     };
   }
 
@@ -22,13 +23,15 @@ class Amenities extends React.Component {
   	var index = Math.floor(Math.random() * 100);
     var that = this;
     $.ajax({
-      url: document.URL + index.toString()
+      url: document.URL + '/amenities/'
     }).done((data) => {
+      var total = Object.assign(data.room[0].amenities.special,data.room[0].amenities.essential);
       that.setState({
         specialAmenities: data.room[0].amenities.special,
         essentialAmenities: data.room[0].amenities.essential,
+        totalAmenities: total,
+        toShow: Math.floor(Object.keys(total)*0.4),
         urls: data.URLs[0],
-        propertyId: index,
       });
     });
   }
@@ -44,9 +47,9 @@ class Amenities extends React.Component {
       <div>
         <ImagesList special={this.state.specialAmenities} essential={this.state.essentialAmenities} 
           images={this.state.urls} toggle={this.toggleModal} show={this.state.show}/>
-        <ImagesDefault special={this.state.specialAmenities} essential={this.state.essentialAmenities} 
+        <ImagesDefault total={this.state.totalAmenities} toShow={this.state.toShow}
           images={this.state.urls} />
-        <button onClick={this.toggleModal}>Show All Amenities</button>
+        <button onClick={this.toggleModal}>Show All {Object.keys(this.state.totalAmenities).length} Amenities</button>
       </div>
     );
   }

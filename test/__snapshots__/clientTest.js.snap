@@ -21,3 +21,7 @@ exports[`Amenities renders on the page 1`] = `
   </button>
 </div>
 `;
+
+exports[`Default Image List renders on the page 1`] = `<imagesDefault />`;
+
+exports[`Modal Image List renders on the page 1`] = `<imagesList />`;

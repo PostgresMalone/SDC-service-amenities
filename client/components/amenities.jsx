@@ -8,6 +8,7 @@ class Amenities extends React.Component {
   constructor(props) {
     super(props);
     this.toggleModal = this.toggleModal.bind(this);
+    this.buttonRef = React.createRef();
     this.state = {
       show: false,
       specialAmenities: {},
@@ -32,7 +33,6 @@ class Amenities extends React.Component {
         total[key] ? count++ : null;
       }
       var toShow = (count < 1) ? count : Math.floor(count*0.6);
-      console.log(toShow);
       that.setState({
         specialAmenities: data.room[0].amenities.special,
         essentialAmenities: data.room[0].amenities.essential,
@@ -55,9 +55,12 @@ class Amenities extends React.Component {
       <div>
         <ImagesList special={this.state.specialAmenities} essential={this.state.essentialAmenities} 
           images={this.state.urls} toggle={this.toggleModal} show={this.state.show}/>
-        <ImagesDefault total={this.state.totalAmenities} toShow={this.state.toShow}
+          <ImagesDefault total={this.state.totalAmenities} toShow={this.state.toShow}
           images={this.state.urls} />
-        <button onClick={this.toggleModal}>Show All {this.state.total} Amenities</button>
+        <button style={styles.fonts,styles.initialButton} ref={this.buttonRef}
+        onMouseOver={() => this.buttonRef.current.style.textDecoration='underline'} 
+        onMouseOut={() => this.buttonRef.current.style.textDecoration='none'}
+        onClick={this.toggleModal}>Show All {this.state.total} Amenities</button>
       </div>
     );
   }

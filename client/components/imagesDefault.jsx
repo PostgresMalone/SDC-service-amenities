@@ -12,11 +12,15 @@ const imagesDefault = (props) => {
   }
   return (
     <div>
-      <h1>Amenities</h1>
+      <h1 style={styles.headfonts}>Amenities</h1>
       {Object.keys(toMap).map((amenity) => (
-        <div style={styles.initial}>
-          <img style={styles.initial} name={amenity} src={props.images[amenity]}></img>
-          <label htmlFor={amenity} style={styles.initial}>{amenity}</label>
+        <div style={styles.initial, styles.fonts}>
+          <div>
+            <img style={styles.initialImage, styles.fonts} name={amenity} src={props.images[amenity]}></img>
+          </div>
+          <div>
+            <div style={styles.initialText, styles.fonts}>{amenity}</div>
+          </div>
         </div>
       ))}
     </div>

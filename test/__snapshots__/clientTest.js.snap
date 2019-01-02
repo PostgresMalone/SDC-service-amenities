@@ -10,14 +10,16 @@ exports[`Amenities renders on the page 1`] = `
     toggle={[Function]}
   />
   <imagesDefault
-    essential={Object {}}
     images={Object {}}
-    special={Object {}}
+    toShow={0}
+    total={Object {}}
   />
   <button
     onClick={[Function]}
   >
-    Show All Amenities
+    Show All 
+    0
+     Amenities
   </button>
 </div>
 `;

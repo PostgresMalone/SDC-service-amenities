@@ -13,12 +13,6 @@ describe('Amenities', () => {
     expect(toJson(component)).toMatchSnapshot();
   });
 
-  it('Contains a button', () => {
-  	const wrapper = shallow(<Amenities />);
-    const component = wrapper.shallow();
-
-    expect(component)
-  })
 });
 
 describe('Default Image List', () => {

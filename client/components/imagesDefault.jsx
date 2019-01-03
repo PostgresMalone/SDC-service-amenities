@@ -11,7 +11,7 @@ const imagesDefault = (props) => {
     }
   }
   return (
-    <div>
+    <div style={styles.container}>
       <h1 style={styles.headfonts}>Amenities</h1>
       {Object.keys(toMap).map((amenity) => (
         <div style={styles.initial, styles.fonts}>

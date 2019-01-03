@@ -92,6 +92,9 @@ var notPresent = {
   color: '#484848',
 };
 
+var container = {
+  display: 'inline-grid',
+}
 var present = {
 	marginRight: 'auto',
 	marginLeft: 'auto',
@@ -119,6 +122,7 @@ var modalHide = {
 };
 
 export default {
+  container,
   fonts,
   headfonts,
   modalShow,

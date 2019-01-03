@@ -8,7 +8,9 @@ class Amenities extends React.Component {
   constructor(props) {
     super(props);
     this.toggleModal = this.toggleModal.bind(this);
+    this.scroll = this.scroll.bind(this);
     this.buttonRef = React.createRef();
+    this.topRef = React.createRef();
     this.state = {
       show: false,
       specialAmenities: {},
@@ -22,7 +24,6 @@ class Amenities extends React.Component {
   }
 
   componentDidMount() {
-  	var index = Math.floor(Math.random() * 100);
     var that = this;
     $.ajax({
       url: document.URL + '/amenities/'
@@ -45,22 +46,34 @@ class Amenities extends React.Component {
   }
 
   toggleModal () {
+    this.scroll();
     this.setState({
       show: !this.state.show,
     });
   }
 
+  scroll () {
+    var that = this;
+    window.scrollTo({
+      top: that.topRef.current.offsetTop,
+      behavior: "smooth",
+    });
+  }
+
   render() {
     return (
-      <div>
+      <div ref={this.topRef}>
         <ImagesList special={this.state.specialAmenities} essential={this.state.essentialAmenities} 
-          images={this.state.urls} toggle={this.toggleModal} show={this.state.show}/>
-          <ImagesDefault total={this.state.totalAmenities} toShow={this.state.toShow}
+          images={this.state.urls} toggle={this.toggleModal} show={this.state.show}
+          scroll={this.scroll}/>
+        <ImagesDefault total={this.state.totalAmenities} toShow={this.state.toShow}
           images={this.state.urls} />
+        <div>
         <button style={styles.fonts,styles.initialButton} ref={this.buttonRef}
         onMouseOver={() => this.buttonRef.current.style.textDecoration='underline'} 
         onMouseOut={() => this.buttonRef.current.style.textDecoration='none'}
         onClick={this.toggleModal}>Show All {this.state.total} Amenities</button>
+        </div>
       </div>
     );
   }

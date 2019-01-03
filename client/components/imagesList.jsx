@@ -6,7 +6,10 @@ const imagesList = (props) => {
   return (
     <div style={props.show ? styles.modalShow : styles.modalHide}>
       <section style={styles.imageList}>
-        <button onClick={() => props.toggle()}>Back</button>
+        <button onClick={() => {
+          props.scroll();
+          props.toggle();
+        }}>Back</button>
         <h1 style={styles.present}>Special to this loft</h1>
         <p style={styles.present}>This home has these unique amenities</p>
         {Object.keys(props.special).map((amenity) => (

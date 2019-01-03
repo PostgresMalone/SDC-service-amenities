@@ -68,12 +68,10 @@ class Amenities extends React.Component {
           scroll={this.scroll}/>
         <ImagesDefault total={this.state.totalAmenities} toShow={this.state.toShow}
           images={this.state.urls} />
-        <div>
-        <button style={styles.fonts,styles.initialButton} ref={this.buttonRef}
+        <button style={styles.initialButton} ref={this.buttonRef}
         onMouseOver={() => this.buttonRef.current.style.textDecoration='underline'} 
         onMouseOut={() => this.buttonRef.current.style.textDecoration='none'}
         onClick={this.toggleModal}>Show All {this.state.total} Amenities</button>
-        </div>
       </div>
     );
   }

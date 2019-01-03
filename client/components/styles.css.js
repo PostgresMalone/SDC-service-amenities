@@ -3,6 +3,7 @@ var fonts = {
   fontSize: '16px',
   lineHeight: '1.43',
   color: '#484848',
+  textAlign: 'center'
 };
 
 var headfonts = {
@@ -10,53 +11,47 @@ var headfonts = {
   fontSize: '36px',
   lineHeight: '40px',
   color: '#484848',
-};
-
-var divbox = {
-  display: 'block',
-  marginBottom: '48px',
-  boxSizing: 'border-box',  
+  gridColumn: '1/7',
+  paddingBottom: '20px',
 };
 
 var initialImage = {
-  position: 'absolute',
-  verticalAlign: 'middle',
   border: '0',
   boxSizing: 'border-box',
+  width: '100%',
+  height: '100%',
+  verticalAlign: 'middle',
 };
 
 var initialText = {
+  fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
   lineHeight: '24px',
   maxHeight: '48px',
   overflow: 'hidden',
   textoverflow: 'ellipsis',
-  display: '-webkit-box',
   boxAlign: 'center',
-  textAlign: 'center',
+  fontSize: '16px',
+  color: '#484848',
+  textAlign: 'center'
 }
 
-var initial = {
-  width: '100%',
-  backgroundColor: '#F2F2F2',
-  borderRadius: '4px',
-  overflow: 'hidden',
-  display: 'inline-block',
-  paddingLeft: '4px',
-  paddingRight: '4px',
-  width: '16.666666666666668%',
-  maxHeight: '200px',
-  maxWidth: '300px',
-  height: '200px',
-  textAlign: 'center',
-};
-
-var button = {
-  position: 'fixed',
+var modalButton = {
   top: '0',
   left: '0',
+  border: '0px',
+  padding: '0px',
+  margin: '0px',
+  backgroundColor: '#F2F2F2',
+  fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
+  fontSize: '40px',
+  color: '#484848',
+  textAlign: 'center',
+  cursor: 'pointer',
 };
 
 var initialButton = {
+  fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
+  fontWeight: 'bold',
   backgroundColor: '#F2F2F2',
   color: '#A61D55',
   border: '0px',
@@ -78,33 +73,70 @@ var imageList = {
   color: '#484848',
 };
 
-
-var notPresent = {
-	marginRight: 'auto',
-	marginLeft: 'auto',
-  display: 'list-item',
+var notPresentText = {
+  width:'300px',
+  gridColumn: '1/3', 
   opacity: '0.5',
   textDecoration: 'line-through',
-  textAlign: 'center',
   fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
   fontSize: '16px',
   lineHeight: '1.43',
   color: '#484848',
+};
+
+var notPresentImage = {
+  gridColumn:'3', 
+  opacity: '0.5',
+  height:'64px',
+  width: '64px',
 };
 
 var container = {
-  display: 'inline-grid',
+  display: 'grid',
+  gridTemplateColumns: 'auto auto auto auto auto auto',
+  gridRowGap: '20px',
+  marginBottom: '100px'
+};
+
+var presentTextHeader = {
+  paddingBottom: '10px',
+  gridColumn: '1/5',
+  textAlign:'left',
+  fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
+  fontSize: '24px',
+  lineHeight: '1.43',
+  color: '#484848',
 }
-var present = {
-	marginRight: 'auto',
-	marginLeft: 'auto',
-  display: 'list-item',
-  textAlign: 'center',
+
+var presentText = {
+  width:'300px',
+  gridColumn: '1/3',
+  textAlign:'left',
   fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
   fontSize: '16px',
   lineHeight: '1.43',
   color: '#484848',
 };
+
+var presentImage = {
+  height:'64px',
+  width: '64px',
+};
+
+var modalContainer = {
+  display: 'grid',
+  gridTemplateColumns: 'auto auto auto auto auto',
+  gridRowGap: '20px',
+  marginBottom: '100px',
+};
+
+var modalEntry = {
+  display:'grid',
+  marginLeft: '100px',
+  marginBottom: '20px',
+  gridTemplateColumns: 'auto auto auto auto auto',
+  gridColumn: '1/5',
+}
 
 var modalShow = {
 	margin:'auto',
@@ -125,14 +157,17 @@ export default {
   container,
   fonts,
   headfonts,
+  modalButton,
   modalShow,
   modalHide,
-  divbox,
-  button,
-  notPresent,
-  present,
+  modalContainer,
+  modalEntry,
+  presentImage,
+  notPresentText,
+  notPresentImage,
+  presentText,
+  presentTextHeader,
   imageList,
-  initial,
   initialImage,
   initialText,
   initialButton,

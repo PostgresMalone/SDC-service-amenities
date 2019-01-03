@@ -15,7 +15,7 @@ const imagesList = (props) => {
         {Object.keys(props.special).map((amenity) => (
           props.special[amenity] 
             ? <div style={styles.special}>
-              <label className="special" htmlFor={amenity} style={styles.present}>{amenity}
+              <label htmlFor={amenity} style={styles.present}>{amenity}
                 <img name={amenity} src={props.images[amenity]} style={styles.present}></img>
               </label>
             </div> 
@@ -26,7 +26,7 @@ const imagesList = (props) => {
         {Object.keys(props.essential).map((amenity) => (
           props.essential[amenity] 
             ? <div style={styles.special}>
-              <label className="essential" htmlFor={amenity} style={styles.present}>{amenity}</label>
+              <label htmlFor={amenity} style={styles.present}>{amenity}</label>
               <img name={amenity} src={props.images[amenity]} style={styles.present}></img>
             </div> 
             : null
@@ -37,7 +37,7 @@ const imagesList = (props) => {
           props.special[amenity] 
             ? null 
             : <div style={styles.special}>
-              <label className="special" htmlFor={amenity} style={styles.notPresent}>{amenity}
+              <label htmlFor={amenity} style={styles.notPresent}>{amenity}
                 <img name={amenity} src={props.images[amenity]} style={styles.notPresent}></img>
               </label>
             </div>

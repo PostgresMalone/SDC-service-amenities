@@ -46,6 +46,11 @@ class Amenities extends React.Component {
   }
 
   toggleModal () {
+    if (!this.state.show) {
+      document.body.style.overflow = 'hidden';  
+    } else {
+      document.body.style.overflow = 'scroll';
+    }
     this.scroll();
     this.setState({
       show: !this.state.show,

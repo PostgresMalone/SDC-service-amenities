@@ -41,24 +41,24 @@ const modalButton = {
   border: '0px',
   padding: '0px',
   margin: '0px',
-  backgroundColor: '#F2F2F2',
   fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
   fontSize: '40px',
   color: '#484848',
   textAlign: 'center',
   cursor: 'pointer',
+  backgroundColor: 'white',
 };
 
 const initialButton = {
   fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
   fontWeight: 'bold',
-  backgroundColor: '#F2F2F2',
   color: '#A61D55',
   border: '0px',
   margin: '0px',
   padding: '0px',
   textAlign: 'left',
   cursor: 'pointer',
+  backgroundColor: 'white',
 };
 
 const imageList = {
@@ -140,13 +140,15 @@ const modalEntry = {
 
 const modalShow = {
   margin: 'auto',
-  position: 'absolute',
-  top: '100',
-  left: '100',
+  position: 'fixed',
+  bottom: '0',
+  right: '0',
+  overflow: 'scroll',
+  zIndex: '1000000',
   width: '100%',
   height: '100%',
   background: 'rgba(0, 0, 0, 0.6)',
-  display: 'block'
+  display: 'block',
 };
 
 const modalHide = {

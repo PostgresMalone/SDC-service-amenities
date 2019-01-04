@@ -18,12 +18,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:Id', (req, res) => {
-	res.sendFile(Path.resolve(__dirname + '/../public/index.html'))
-})
+  res.sendFile(Path.resolve(__dirname + '/../public/index.html'));
+});
 
 app.get('/:Id/amenities/', (req, res) => {
   var Id;
-  if(Number(req.params.Id) > 100 || Number(req.params.Id) < 1 || !Number(req.params.Id)) {
+  if (Number(req.params.Id) > 100 || Number(req.params.Id) < 1 || !Number(req.params.Id)) {
     Id = 1;
   } else {
     Id = req.params.Id;
@@ -51,7 +51,7 @@ app.get('//amenities/', (req, res) => {
       res.json(data);
     });
   });
-})
+});
 
 app.listen(port, () => console.log('server is listening at port:' + port));
 

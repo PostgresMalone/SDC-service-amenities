@@ -1,4 +1,4 @@
-var fonts = {
+const fonts = {
   fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
   fontSize: '16px',
   lineHeight: '1.43',
@@ -6,7 +6,7 @@ var fonts = {
   textAlign: 'center'
 };
 
-var headfonts = {
+const headfonts = {
   fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
   fontSize: '36px',
   lineHeight: '40px',
@@ -15,7 +15,7 @@ var headfonts = {
   paddingBottom: '20px',
 };
 
-var initialImage = {
+const initialImage = {
   border: '0',
   boxSizing: 'border-box',
   width: '100%',
@@ -23,7 +23,7 @@ var initialImage = {
   verticalAlign: 'middle',
 };
 
-var initialText = {
+const initialText = {
   fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
   lineHeight: '24px',
   maxHeight: '48px',
@@ -33,9 +33,9 @@ var initialText = {
   fontSize: '16px',
   color: '#484848',
   textAlign: 'center'
-}
+};
 
-var modalButton = {
+const modalButton = {
   top: '0',
   left: '0',
   border: '0px',
@@ -49,7 +49,7 @@ var modalButton = {
   cursor: 'pointer',
 };
 
-var initialButton = {
+const initialButton = {
   fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
   fontWeight: 'bold',
   backgroundColor: '#F2F2F2',
@@ -59,9 +59,9 @@ var initialButton = {
   padding: '0px',
   textAlign: 'left',
   cursor: 'pointer',
-}
+};
 
-var imageList = {
+const imageList = {
   position: 'sticky',
   background: 'white',
   width: 'auto',
@@ -73,8 +73,8 @@ var imageList = {
   color: '#484848',
 };
 
-var notPresentText = {
-  width:'300px',
+const notPresentText = {
+  width: '300px',
   gridColumn: '1/3', 
   opacity: '0.5',
   textDecoration: 'line-through',
@@ -84,62 +84,62 @@ var notPresentText = {
   color: '#484848',
 };
 
-var notPresentImage = {
-  gridColumn:'3', 
+const notPresentImage = {
+  gridColumn: '3', 
   opacity: '0.5',
-  height:'64px',
+  height: '64px',
   width: '64px',
 };
 
-var container = {
+const container = {
   display: 'grid',
   gridTemplateColumns: 'auto auto auto auto auto auto',
   gridRowGap: '20px',
   marginBottom: '100px'
 };
 
-var presentTextHeader = {
+const presentTextHeader = {
   paddingBottom: '10px',
   gridColumn: '1/5',
-  textAlign:'left',
+  textAlign: 'left',
   fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
   fontSize: '24px',
   lineHeight: '1.43',
   color: '#484848',
-}
+};
 
-var presentText = {
-  width:'300px',
+const presentText = {
+  width: '300px',
   gridColumn: '1/3',
-  textAlign:'left',
+  textAlign: 'left',
   fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
   fontSize: '16px',
   lineHeight: '1.43',
   color: '#484848',
 };
 
-var presentImage = {
-  height:'64px',
+const presentImage = {
+  height: '64px',
   width: '64px',
 };
 
-var modalContainer = {
+const modalContainer = {
   display: 'grid',
   gridTemplateColumns: 'auto auto auto auto auto',
   gridRowGap: '20px',
   marginBottom: '100px',
 };
 
-var modalEntry = {
-  display:'grid',
+const modalEntry = {
+  display: 'grid',
   marginLeft: '100px',
   marginBottom: '20px',
   gridTemplateColumns: 'auto auto auto auto auto',
   gridColumn: '1/5',
-}
+};
 
-var modalShow = {
-	margin:'auto',
+const modalShow = {
+  margin: 'auto',
   position: 'absolute',
   top: '100',
   left: '100',
@@ -149,7 +149,7 @@ var modalShow = {
   display: 'block'
 };
 
-var modalHide = {
+const modalHide = {
   display: 'none',
 };
 

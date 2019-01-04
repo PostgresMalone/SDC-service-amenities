@@ -47,14 +47,14 @@ var amenURLs = {
   'Self check-in': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/self-check-in.png',
   'Pool': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/pool.png',
   'Kitchen': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/kitchen.png', 
-  'Washer': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/tv.png',
+  'Washer': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/washer.png',
   'Dryer': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/dryer.png',
   'Dishwasher': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/dishwasher.png',
   'Indoor fireplace': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/indoor-fireplace.png',
   'Pets allowed': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/pets-allowed.png',
   'Heating': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/heating.png',
   'Air conditioning': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/air-conditioning.png',
-  'Wifi': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/washer.png',
+  'Wifi': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/wireless-internet.png',
   'TV': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/tv.png',
   'Bathroom essentials': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/essentials.png',
   'Bedroom comforts': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/extra-pillows-blankets.png',
@@ -63,7 +63,7 @@ var amenURLs = {
   'Iron': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/iron.png',
   'Carbon monoxide detector': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/co2-detector.png',
   'Smoke detector': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/smoke-detector.png',
-  'Parking': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/kitchen.png',
+  'Parking': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/parking.png',
 };
 let AmenImages = mongoose.model('AmenImages', amenURL);
 

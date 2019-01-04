@@ -6,47 +6,52 @@ const imagesList = (props) => {
   return (
     <div style={props.show ? styles.modalShow : styles.modalHide}>
       <section style={styles.imageList}>
-        <button onClick={() => props.toggle()}>Back</button>
-        <h1 style={styles.present}>Special to this loft</h1>
-        <p style={styles.present}>This home has these unique amenities</p>
-        {Object.keys(props.special).map((amenity) => (
-          props.special[amenity] 
-            ? <div style={styles.special}>
-              <label className="special" htmlFor={amenity} style={styles.present}>{amenity}
-                <img name={amenity} src={props.images[amenity]} style={styles.present}></img>
-              </label>
-            </div> 
-            : null
-        ))}
-        <h1 style={styles.present}>Essential Amenities</h1>
-        <p style={styles.present}>This Airbnb Plus home comes with these amenities</p>
-        {Object.keys(props.essential).map((amenity) => (
-          props.essential[amenity] 
-            ? <div style={styles.special}>
-              <label className="essential" htmlFor={amenity} style={styles.present}>{amenity}</label>
-              <img name={amenity} src={props.images[amenity]} style={styles.present}></img>
-            </div> 
-            : null
-        ))}
-        <h1 style={styles.present}>Not available</h1>
-        <p style={styles.present}>This home doesn't have these amenities</p>
-        {Object.keys(props.special).map((amenity) => (
-          props.special[amenity] 
-            ? null 
-            : <div style={styles.special}>
-              <label className="special" htmlFor={amenity} style={styles.notPresent}>{amenity}
-                <img name={amenity} src={props.images[amenity]} style={styles.notPresent}></img>
-              </label>
-            </div>
-        ))}
-        {Object.keys(props.essential).map((amenity) => (
-          props.essential[amenity] 
-            ? null 
-            : <div style={styles.special}>
-              <label className="essential" htmlFor={amenity} style={styles.notPresent}>{amenity}</label>
-              <img name={amenity} src={props.images[amenity]} style={styles.notPresent}></img>
-            </div>
-        ))}
+        <div style={{display: 'block', paddingBottom: '50px'}}>
+          <button style={styles.modalButton}onClick={() => {
+            props.scroll();
+            props.toggle();
+          }}>{`<`}</button>
+        </div>
+        <div style={styles.modalEntry}>
+          <h1 style={styles.presentTextHeader}>Special to this loft</h1>
+          <p style={styles.presentTextHeader}>This home has these unique amenities</p>
+          {Object.keys(props.special).map((amenity) => (
+            props.special[amenity]
+              ? <div style={styles.modalEntry}>
+                <p style={styles.presentText}>{amenity}</p>
+                <img name={amenity} src={props.images[amenity]} style={styles.presentImage}></img>
+              </div> 
+              : null
+          ))}
+          <h1 style={styles.presentTextHeader}>Essential Amenities</h1>
+          <p style={styles.presentTextHeader}>This Airbnb Plus home comes with these amenities</p>
+          {Object.keys(props.essential).map((amenity) => (
+            props.essential[amenity] 
+              ? <div style={styles.modalEntry}>
+                <p style={styles.presentText}>{amenity}</p>
+                <img name={amenity} src={props.images[amenity]} style={styles.presentImage}></img>
+              </div> 
+              : null
+          ))}
+          <h1 style={styles.presentTextHeader}>Not available</h1>
+          <p style={styles.presentTextHeader}>This home doesn't have these amenities</p>
+          {Object.keys(props.special).map((amenity) => (
+            props.special[amenity] 
+              ? null 
+              : <div style={styles.modalEntry}>
+                <p style={styles.notPresentText}>{amenity}</p>
+                <img name={amenity} src={props.images[amenity]} style={styles.notPresentImage}></img>
+              </div>
+          ))}
+          {Object.keys(props.essential).map((amenity) => (
+            props.essential[amenity] 
+              ? null 
+              : <div style={styles.modalEntry}>
+                <p style={styles.notPresentText}>{amenity}</p>
+                <img name={amenity} src={props.images[amenity]} style={styles.notPresentImage}></img>
+              </div>
+          ))}
+        </div>
       </section>
     </div>
   );

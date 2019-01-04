@@ -28,19 +28,19 @@ class Amenities extends React.Component {
     $.ajax({
       url: `${document.URL}/amenities/`
     }).done((data) => {
-      var total = Object.assign(data.room[0].amenities.special,data.room[0].amenities.essential);
+      var total = {...data.special, ...data.essential};
       var count = 0;
       for (var key in total) {
         total[key] ? count++ : null;
       }
       var toShow = (count < 1) ? count : Math.floor(count*0.6);
       that.setState({
-        specialAmenities: data.room[0].amenities.special,
-        essentialAmenities: data.room[0].amenities.essential,
+        specialAmenities: data.special,
+        essentialAmenities: data.essential,
         totalAmenities: total,
         toShow: toShow,
         total:count,
-        urls: data.URLs[0],
+        urls: data.URLs,
       });
     });
   }

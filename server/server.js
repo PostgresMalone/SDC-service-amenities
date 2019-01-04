@@ -5,7 +5,6 @@ const Partials = require('express-partials');
 const Promise = require('bluebird');
 const fs = require('fs');
 const db = require('../database/db.js');
-const pug = require('pug');
 let app = Express();
 const port = 4420;
 
@@ -24,17 +23,19 @@ app.get('/:Id', (req, res) => {
 
 app.get('/:Id/amenities/', (req, res) => {
   var Id;
-  console.log(req);
   if(Number(req.params.Id) > 100 || Number(req.params.Id) < 1 || !Number(req.params.Id)) {
     Id = 1;
   } else {
     Id = req.params.Id;
   }
   var data = {};
-  db.getURLS().then((results) => {
-    data.URLs = results;
-    db.getOne(Id).then((results) => {
-      data.room = results;
+  db.getURLS().then((urls) => {
+    data.URLs = urls[0];
+    db.getOne(Id).then((presence) => {
+      console.log(presence[0].amenities.special);
+      data.special = presence[0].amenities.special;
+      data.essential = presence[0].amenities.essential;
+      console.log(data);
       res.json(data);
     });
   });
@@ -42,10 +43,11 @@ app.get('/:Id/amenities/', (req, res) => {
 
 app.get('//amenities/', (req, res) => {
   var data = {};
-  db.getURLS().then((results) => {
-    data.URLs = results;
-    db.getOne(1).then((results) => {
-      data.room = results;
+  db.getURLS().then((urls) => {
+    data.URLs = urls[0];
+    db.getOne(1).then((presence) => {
+      data.special = presence[0].amenities.special;
+      data.essential = presence[0].amenities.essential;
       res.json(data);
     });
   });

@@ -36,6 +36,7 @@ const initialText = {
 };
 
 const modalButton = {
+  backgroundColor: 'white',
   top: '0',
   left: '0',
   border: '0px',
@@ -46,10 +47,10 @@ const modalButton = {
   color: '#484848',
   textAlign: 'center',
   cursor: 'pointer',
-  backgroundColor: 'white',
 };
 
 const initialButton = {
+  backgroundColor: 'rgb(245,245,245)',
   fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
   fontWeight: 'bold',
   color: '#A61D55',
@@ -58,7 +59,6 @@ const initialButton = {
   padding: '0px',
   textAlign: 'left',
   cursor: 'pointer',
-  backgroundColor: 'white',
 };
 
 const imageList = {

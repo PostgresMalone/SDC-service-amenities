@@ -11,7 +11,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed": "node ./database/db.js",
+    "seed": "node ./database/seed.js",
     "dev-start": "webpack -d --watch",
     "start": "nodemon ./server/server.js",
     "test-server": "node ./node_modules/mocha/bin/mocha",

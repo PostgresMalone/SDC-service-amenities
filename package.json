@@ -15,7 +15,8 @@
     "dev-start": "webpack -d --watch",
     "start": "nodemon ./server/server.js",
     "test-server": "node ./node_modules/mocha/bin/mocha",
-    "test-client": "jest"
+    "test-client": "jest",
+    "docker": "node ./database/seed.js && node ./server/server.js"
   },
   "dependencies": {
     "bluebird": "^3.5.3",
@@ -54,6 +55,6 @@
     "regenerator-runtime": "^0.13.1",
     "webpack": "^4.28.0",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.14"
   }
 }

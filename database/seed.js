@@ -45,6 +45,7 @@ db.Amenities.deleteMany({}).then(() => {
       if (err) {
         console.log(err);
       }
+      mongoose.connection.close();
     });
   });
 });

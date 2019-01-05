@@ -14,11 +14,11 @@ app.use(BodyParser.urlencoded({extended: true}));
 
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/../public/index.html');
+  res.sendFile('index');
 });
 
 app.get('/:Id', (req, res) => {
-  res.sendFile(Path.resolve(__dirname + '/../public/index.html'));
+  res.sendFile('index');
 });
 
 app.get('/:Id/amenities/', (req, res) => {

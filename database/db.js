@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/amenities', {useNewUrlParser: true});
+const data = require('./data.js');
+mongoose.connect('mongodb://172.17.0.2/amenities', {useNewUrlParser: true});
 var db = mongoose.connection;
 
 let amenSchema = mongoose.Schema({

@@ -50,9 +50,10 @@ const modalButton = {
 };
 
 const initialButton = {
-  backgroundColor: 'rgb(245,245,245)',
-  fontFamily: 'Circular,"Helvetica Neue",Helvetica,Arial,sans-serif',
+  backgroundColor: '#fff',
+  fontFamily: 'system-ui',
   fontWeight: 'bold',
+  fontSize: '20px',
   color: '#A61D55',
   border: '0px',
   margin: '0px',

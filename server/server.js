@@ -11,7 +11,6 @@ app.use(Express.static(__dirname + '/../public'));
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({extended: true}));
 
-
 app.get('/', (req, res) => {
   res.sendFile(Path.resolve(__dirname + '/../public/index.html'));
 });

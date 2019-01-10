@@ -8,15 +8,15 @@ const columns = 'roomname,' + specialAmenities.join() + ',' + essentialAmenities
 const before = Date.now();
 
 const writeFile = (stream, rowsRecorded, j) => {
-  if (rowsRecorded >= 10000) {
+  if (rowsRecorded >= 1000000) {
     stream.end();
-    if (j === 1000) {
+    if (j === 10) {
       console.log('time taken: ', (Date.now() - before) / 60000);
     }
     return;
   }
 
-  const id = (j - 1) * 10000 + rowsRecorded + 1;
+  const id = (j - 1) * 1000000 + rowsRecorded + 1;
   let roomString = id + ',' + faker.lorem.word() + id;
   
   for (let j = 0; j < specialAmenities.length; j++) {
@@ -37,7 +37,7 @@ const writeFile = (stream, rowsRecorded, j) => {
   }
 };
 
-for (let j = 1; j <= 1000; j++) {
+for (let j = 1; j <= 10; j++) {
   const roomsFile = fs.createWriteStream(`./data/rooms${j}.csv`);
   roomsFile.write(columns);
   writeFile(roomsFile, 0, j);

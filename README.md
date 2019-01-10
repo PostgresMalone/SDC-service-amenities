@@ -43,7 +43,7 @@ npm install -g webpack
 npm install
 ```
 ## CRUD Operations
----
+
 Observations:
 1. `Body` represents the data sent inside the body of the request object.
 2. Even if the output is `none`, a message is sent back to the client in the `response` object, warning him of the success/failure of the operation.

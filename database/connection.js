@@ -1,24 +1,3 @@
-// const Sequelize = require('sequelize');
-
-// const db = new Sequelize('ROOMSAMENITIES', 'lucasparreiradefariaborges', '', {
-//   dialect: 'postgres',
-//   operatorsAliases: false,
-//   logging: false,
-//   host: 'localhost',
-// });
-
-// // uncomment the following lines to check the connection to the postgres DB
-// // db
-// //   .authenticate()
-// //   .then(() => {
-// //     console.log('Connection has been established successfully.');
-// //   })
-// //   .catch(err => {
-// //     console.error('Unable to connect to the database:', err);
-// //   });
-
-// module.exports = db;
-
 const { Pool, Client } = require('pg');
 
 const pool = new Pool({
@@ -28,21 +7,21 @@ const pool = new Pool({
   password: ''
 });
 
-const saveData = (turn) => {
-  for (let i = turn; i < 10 + turn; i++) {
-    pool.query(`\copy Rooms FROM '/Users/lucasparreiradefariaborges/SDC-service-amenities/data/rooms${i}.csv' WITH (FORMAT csv, HEADER true)`, (err, res) => {
+pool.on('error', (err) => {
+  console.log('Error', err);
+});
+
+const saveData = () => {
+  for (let i = 1; i <= 10; i++) {
+    const file = `/Users/lucasparreiradefariaborges/SDC-service-amenities/data/rooms${i}.csv`;
+    pool.query(`COPY Rooms FROM \'${file}\' WITH (FORMAT csv, HEADER true)`, (err, res) => {
       if (err) {
-        console.log('length', arr.length);
-        throw err;
+        console.log('error!');
       }
     });
   }
 };
 
-for (let i = 0; i < 100; i++) {
-  saveData(i * 10 + 1);
-}
-
-// saveData();
+saveData();
 
 pool.end();

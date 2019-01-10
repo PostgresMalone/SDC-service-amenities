@@ -16,7 +16,12 @@
     "start": "nodemon ./server/server.js",
     "test-server": "node ./node_modules/mocha/bin/mocha",
     "test-client": "jest",
-    "docker": "node ./database/seed.js && node ./server/server.js"
+    "docker": "node ./database/seed.js && node ./server/server.js",
+    "generateData": "node ./database/dataGenerator1.js && node ./database/dataGenerator2.js",
+    "schema": "psql -d ROOMSAMENITIES -a -f database/schema.sql",
+    "saveData": "psql -d ROOMSAMENITIES -a -f database/dataSaver.sql",
+    "schemaCassandra": "cqlsh -f database/schema.cql",
+    "saveDataCassandra": "cqlsh -f database/dataSaver.cql"
   },
   "dependencies": {
     "bluebird": "^3.5.3",
@@ -31,7 +36,8 @@
     "pug": "^2.0.3",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "sequelize": "^4.42.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -50,6 +56,7 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "enzyme-to-json": "^3.3.5",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "faker": "^4.1.0",
     "jest": "^23.6.0",
     "mocha": "^5.2.0",
     "react-test-renderer": "^16.7.0",

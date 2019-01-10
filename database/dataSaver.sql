@@ -1,1 +1,1 @@
-COPY Rooms FROM '/Users/lucasparreiradefariaborges/SDC-service-amenities/database/rooms.csv' WITH (FORMAT csv, HEADER true);
+COPY Rooms FROM '/Users/lucasparreiradefariaborges/SDC-service-amenities/data/rooms1.csv' WITH (FORMAT csv, HEADER true);

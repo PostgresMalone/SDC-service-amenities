@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "bluebird": "^3.5.3",
+    "cassandra-driver": "^4.0.0",
     "eslint": "^5.10.0",
     "express-partials": "^0.3.0",
     "express-react-views": "^0.11.0",

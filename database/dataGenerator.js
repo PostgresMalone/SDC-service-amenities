@@ -17,7 +17,7 @@ const writeFile = (stream, rowsRecorded, j) => {
   }
 
   const id = (j - 1) * 1000000 + rowsRecorded + 1;
-  let roomString = id + ',' + faker.lorem.word() + id;
+  let roomString = `${id},${faker.lorem.word()}${id}`;
   
   for (let j = 0; j < specialAmenities.length; j++) {
     roomString = roomString + ',' + !!Math.floor(Math.random() * 2);

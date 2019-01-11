@@ -1,9 +1,10 @@
-CREATE KEYSPACE ROOMSAMENITIES WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': '1'};
+-- CREATE KEYSPACE ROOMSAMENITIES WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': '1'};
 USE ROOMSAMENITIES;
+DROP TABLE IF EXISTS "Rooms";
 
 CREATE TABLE "Rooms" (
   ID int,
-  roomname varchar,
+  roomname text,
   selfCheckIn boolean,
   pool boolean,
   kitchen boolean,
@@ -25,3 +26,4 @@ CREATE TABLE "Rooms" (
   smokeDetector boolean,
   PRIMARY KEY (ID)
 );
+

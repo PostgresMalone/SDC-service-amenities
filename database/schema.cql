@@ -1,4 +1,3 @@
--- CREATE KEYSPACE ROOMSAMENITIES WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': '1'};
 USE ROOMSAMENITIES;
 DROP TABLE IF EXISTS "Rooms";
 
@@ -26,4 +25,3 @@ CREATE TABLE "Rooms" (
   wifi boolean,
   PRIMARY KEY (ID)
 );
-

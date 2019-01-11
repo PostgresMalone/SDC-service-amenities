@@ -30,7 +30,7 @@ const writeFile = (stream, rowsRecorded, j) => {
 
   for (let k = 0; k < amenities.length; k++) {
     if (amenities[k] === 'roomname') {
-      roomString = roomString + ',' + `'${faker.lorem.word()}${id}'`;
+      roomString = roomString + ',' + `${faker.lorem.word()}${id}`;
     } else {
       roomString = roomString + ',' + !!Math.floor(Math.random() * 2);
     }

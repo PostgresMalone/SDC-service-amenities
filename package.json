@@ -18,10 +18,11 @@
     "test-client": "jest",
     "docker": "node ./database/seed.js && node ./server/server.js",
     "generateData": "node ./database/dataGenerator.js",
-    "schema": "psql -d ROOMSAMENITIES -a -f database/schema.sql",
-    "saveData": "psql -d ROOMSAMENITIES -a -f database/dataSaver.sql",
+    "schemaPostgres": "psql -d ROOMSAMENITIES -a -f database/schema.sql",
+    "saveDataPostgres": "node ./database/dataSaver.js",
     "schemaCassandra": "cqlsh -f database/schema.cql",
-    "saveDataCassandra": "cqlsh -f database/dataSaver.cql"
+    "saveDataCassandra": "./database/loopDataSaver.sh",
+    "setUpDb": "npm run generateData && npm run schemaPostgres && npm run saveDataPostgres && npm run schemaCassandra && npm run saveDataCassandra"
   },
   "dependencies": {
     "bluebird": "^3.5.3",

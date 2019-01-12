@@ -2,6 +2,7 @@ USE ROOMSAMENITIES;
 DROP TABLE IF EXISTS "Rooms";
 
 CREATE TABLE "Rooms" (
+  dummyID int,
   ID int,
   airConditioning boolean,
   bathroomEssentials boolean,
@@ -23,7 +24,8 @@ CREATE TABLE "Rooms" (
   TV boolean,
   washer boolean,
   wifi boolean,
-  PRIMARY KEY (ID)
-);
+  PRIMARY KEY (dummyID, ID)
+) WITH CLUSTERING ORDER BY (ID ASC);
 
+CREATE INDEX rooms_index_id ON "Rooms" (ID);
 CREATE INDEX rooms_index_roomname ON "Rooms" (roomname);

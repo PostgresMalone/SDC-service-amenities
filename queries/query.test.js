@@ -1,6 +1,8 @@
 const { Pool } = require('pg');
 const cassandra = require('cassandra-driver');
 const _ = require('underscore');
+const queriesTested = 100;
+const totalRows = Math.pow(10, 7);
 
 describe('SELECT by id query for Postgres', () => {
   let ids;
@@ -18,7 +20,7 @@ describe('SELECT by id query for Postgres', () => {
       console.log('Error', err);
     });
 
-    const { rows } = await pool.query('SELECT * FROM rooms LIMIT 10 OFFSET 9000000');
+    const { rows } = await pool.query(`SELECT * FROM rooms LIMIT ${queriesTested} OFFSET ${totalRows - queriesTested}`);
     ids = _.pluck(rows, 'id');
   });
 
@@ -26,23 +28,22 @@ describe('SELECT by id query for Postgres', () => {
     pool.end();
   });
 
-  test('it should SELECT the 10 queries from the end of the table', () => {
-    expect(ids.length).toBe(10);
+  test('it should SELECT the queriesTested queries from the last 10% rows of the table', () => {
+    expect(ids.length).toBe(queriesTested);
   });
 
   test('it should execute the queries in less than 50ms each in average', async () => {
-    const promisedQueryResults = [];
-    const before = Date.now();
+    const times = [];
 
     for (let i = 0; i < ids.length; i++) {
-      promisedQueryResults.push(pool.query(`SELECT * FROM rooms WHERE id = ${ids[i]}`));
+      const before = Date.now();
+      await pool.query(`SELECT * FROM rooms WHERE id = ${ids[i]}`);
+      const after = Date.now();
+      times.push(after - before);
     }
 
-    await Promise.all(promisedQueryResults)
-      .then(() => {
-        const after = Date.now();
-        expect(after - before).toBeLessThan(500);
-      });
+    const averageTime = times.reduce((total, time) => total + time, 0) / times.length;
+    expect(averageTime).toBeLessThan(50);
   });
 });
 
@@ -62,7 +63,7 @@ describe('SELECT by roomname query for Postgres', () => {
       console.log('Error', err);
     });
 
-    const { rows } = await pool.query('SELECT * FROM rooms LIMIT 10 OFFSET 9000000');
+    const { rows } = await pool.query(`SELECT * FROM rooms LIMIT ${queriesTested} OFFSET ${totalRows - queriesTested}`);
     roomnames = _.pluck(rows, 'roomname');
   });
 
@@ -70,83 +71,83 @@ describe('SELECT by roomname query for Postgres', () => {
     pool.end();
   });
 
-  test('it should SELECT the 10 queries from the end of the table', () => {
-    expect(roomnames.length).toBe(10);
+  test('it should SELECT the queriesTested queries from the last 10% rows of the table', () => {
+    expect(roomnames.length).toBe(queriesTested);
   });
 
   test('it should execute the queries in less than 50ms each in average', async () => {
-    const promisedQueryResults = [];
-    const before = Date.now();
-
+    const times = [];
+    
     for (let i = 0; i < roomnames.length; i++) {
-      promisedQueryResults.push(pool.query(`SELECT * FROM rooms WHERE roomname = '${roomnames[i]}'`));
+      const before = Date.now();
+      await pool.query(`SELECT * FROM rooms WHERE roomname = '${roomnames[i]}'`);
+      const after = Date.now();
+      times.push(after - before);
     }
-
-    await Promise.all(promisedQueryResults)
-      .then(() => {
-        const after = Date.now();
-        expect(after - before).toBeLessThan(500);
-      });
+    
+    const averageTime = times.reduce((total, time) => total + time, 0) / times.length;
+    expect(averageTime).toBeLessThan(50);
   });
 });
 
 //====================================================================================
 
 describe('SELECT by id query for Cassandra', () => {
-  let ids;
   let client;
 
   beforeEach(async () => {
     client = new cassandra.Client({ contactPoints: ['localhost'], localDataCenter: 'datacenter1', keyspace: 'roomsamenities' });
 
     await client.connect();
-    const { rows } = await client.execute('SELECT * FROM "Rooms" WHERE id = 9900000', [], { prepare: true });
-    ids = _.pluck(rows, 'id');
-
   });
 
   afterEach(() => {
     client.shutdown();
   });
 
-  test('it should SELECT the 10 queries from the end of the table', () => {
-    expect(ids.length).toBe(1);
-    console.log('length', ids);
+  test('it should execute the queries in less than 50ms each in average', async () => {
+    const times = [];
+
+    for (let i = 0; i < queriesTested; i++) {
+      const before = Date.now();
+      await client.execute(`SELECT * FROM "Rooms" WHERE id = ${totalRows - i}`, [], { prepare: true });
+      const after = Date.now();
+      times.push(after - before);
+    }
+
+    const averageTime = times.reduce((total, time) => total + time, 0) / times.length;
+    expect(averageTime).toBeLessThan(50);
   });
-
-  // test('it should execute the queries in less than 50ms each in average', async () => {
-  //   const promisedQueryResults = [];
-  //   const before = Date.now();
-
-  //   for (let i = 0; i < ids.length; i++) {
-  //     promisedQueryResults.push(pool.query(`SELECT * FROM rooms WHERE id = ${ids[i]}`));
-  //   }
-
-  //   await Promise.all(promisedQueryResults)
-  //     .then(() => {
-  //       const after = Date.now();
-  //       expect(after - before).toBeLessThan(500);
-  //     });
-  // });
 });
 
-// client.connect(function (err) {
-//   if (err) {
-//     return console.error(err); 
-//   }
-//   console.log('Connected to cluster with %d host(s): %j', client.hosts.length, client.hosts.keys());
-//   console.time('id=velit3969240');
-//   client.execute('SELECT * FROM "Rooms" WHERE roomname = \'vel302602\' ALLOW FILTERING', [], { prepare: true })
-//     .then((result) => {
-//       console.log('data saved');
-//       console.log(result.rows);
-//       console.timeEnd('id=velit3969240');
-//       client.shutdown();
-//     })
-//     .catch(err => {
-//       console.log('error', err);
-//       client.shutdown();
-//     });
+describe('SELECT by roomname query for Cassandra', () => {
+  let roomnames;
+  let client;
 
-// });
+  beforeEach(async () => {
+    client = new cassandra.Client({ contactPoints: ['localhost'], localDataCenter: 'datacenter1', keyspace: 'roomsamenities' });
+
+    await client.connect();
+    const { rows } = await client.execute(`SELECT * FROM "Rooms" WHERE id > ${totalRows - queriesTested}  ALLOW FILTERING`);
+    roomnames = _.pluck(rows, 'roomname');
+  });
+
+  afterEach(() => {
+    client.shutdown();
+  });
+
+  test('it should execute the queries in less than 50ms each in average', async () => {
+    const times = [];
+
+    for (let i = 0; i < roomnames.length; i++) {
+      const before = Date.now();
+      await client.execute(`SELECT * FROM "Rooms" WHERE roomname = '${roomnames[i]}'`, [], { prepare: true });
+      const after = Date.now();
+      times.push(after - before);
+    }
+
+    const averageTime = times.reduce((total, time) => total + time, 0) / times.length;
+    expect(averageTime).toBeLessThan(50);
+  });
+});
 

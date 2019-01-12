@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const amenities = ['airConditioning', 'bathroomEssentials', 'bedroomComforts', 'carbonMonoxideDetector', 'coffeeMaker', 'dishWasher', 'dryer', 'hairDryer', 'heating', 'indoorFireplace', 'iron', 'kitchen', 'petsAllowed', 'pool', 'roomname', 'selfCheckIn', 'smokeDetector', 'TV', 'washer', 'wifi'];
 
-const columns = 'id,' + amenities.join() + '\n';
+const columns = 'dummyid,id,' + amenities.join() + '\n';
 const before = Date.now();
 
 const writeFile = (stream, rowsRecorded, j) => {
@@ -16,7 +16,7 @@ const writeFile = (stream, rowsRecorded, j) => {
   }
 
   const id = (j - 1) * 1000000 + rowsRecorded + 1;
-  let roomString = `${id}`;
+  let roomString = `1,${id}`;
 
   for (let k = 0; k < amenities.length; k++) {
     if (amenities[k] === 'roomname') {

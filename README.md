@@ -55,19 +55,12 @@ Observations:
 * Body: object (keys are amenities and values are booleans, indicating whether the room has the amenity)
 * Output: none.
 
-### READ (all rooms)
-* HTTP method: GET;
-* Endpoint: `/rooms`
-* Parameters: none
-* Body: none
-* Output: array of all rooms amenity objects (same structure as the object described above).
-
 ### READ (one room)
 * HTTP method: GET;
 * Endpoint: `/rooms/:roomId`
 * Parameters: `roomId`
 * Body: none
-* Output: rooms amenity object.
+* Output: rooms amenity object (same structure as the object described above).
 
 ### UPDATE
 * HTTP method: PATCH;

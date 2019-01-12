@@ -1,8 +1,12 @@
 const { Pool } = require('pg');
 const cassandra = require('cassandra-driver');
 const _ = require('underscore');
-const queriesTested = 100;
+const queriesTested = 1000;
 const totalRows = Math.pow(10, 7);
+
+// ====================================================================================
+// ============================== POSTGRES ============================================
+// ====================================================================================
 
 describe('SELECT by id query for Postgres', () => {
   let ids;
@@ -44,6 +48,7 @@ describe('SELECT by id query for Postgres', () => {
 
     const averageTime = times.reduce((total, time) => total + time, 0) / times.length;
     expect(averageTime).toBeLessThan(50);
+    console.log('Postgres id - averageTime', averageTime);
   });
 });
 
@@ -87,10 +92,13 @@ describe('SELECT by roomname query for Postgres', () => {
     
     const averageTime = times.reduce((total, time) => total + time, 0) / times.length;
     expect(averageTime).toBeLessThan(50);
+    console.log('Postgres roomname - averageTime', averageTime);
   });
 });
 
-//====================================================================================
+// ====================================================================================
+// ============================== CASSANDRA ===========================================
+// ====================================================================================
 
 describe('SELECT by id query for Cassandra', () => {
   let client;
@@ -117,6 +125,7 @@ describe('SELECT by id query for Cassandra', () => {
 
     const averageTime = times.reduce((total, time) => total + time, 0) / times.length;
     expect(averageTime).toBeLessThan(50);
+    console.log('Cassandra id - averageTime', averageTime);
   });
 });
 
@@ -148,6 +157,7 @@ describe('SELECT by roomname query for Cassandra', () => {
 
     const averageTime = times.reduce((total, time) => total + time, 0) / times.length;
     expect(averageTime).toBeLessThan(50);
+    console.log('Cassandra roomname - averageTime', averageTime);
   });
 });
 

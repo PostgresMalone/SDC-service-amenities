@@ -25,3 +25,5 @@ CREATE TABLE "Rooms" (
   wifi boolean,
   PRIMARY KEY (ID)
 );
+
+CREATE INDEX rooms_index_roomname ON "Rooms" (roomname);

@@ -3,9 +3,17 @@ const BodyParser = require('body-parser');
 const Path = require('path');
 const Partials = require('express-partials');
 const Promise = require('bluebird');
-const db = require('../database/db.js');
+// const db = require('../database/db.js');
 let app = Express();
 const port = 4420;
+
+// import query functions
+const {
+  getAmenities,
+  postAmenities,
+  updateAmenities,
+  deleteRoom
+} = require('../queries/queries.js');
 
 app.use(Express.static(__dirname + '/../public'));
 app.use(BodyParser.json());
@@ -47,6 +55,56 @@ app.get('//amenities/', (req, res) => {
       res.json(data);
     });
   });
+});
+
+// get amenities for one room
+app.get('/rooms/:roomId', (req, res) => {
+  const { roomId } = req.params;
+  getAmenities(roomId, res);
+});
+
+// {
+//   "airconditioning": true,
+//   "bathroomessentials": true,
+//   "bedroomcomforts": true,
+//   "carbonmonoxidedetector": true,
+//   "coffeemaker": true,
+//   "dishwasher": true,
+//   "dryer": true,
+//   "hairdryer": true,
+//   "heating": true,
+//   "indoorfireplace": true,
+//   "iron": true,
+//   "kitchen": true,
+//   "petsallowed": true,
+//   "pool": true,
+//   "roomname": "roomUpdated",
+//   "selfcheckin": true,
+//   "smokedetector": true,
+//   "tv": true,
+//   "washer": true,
+//   "wifi": true
+// }
+
+
+// create a new room row in the table
+app.post('/rooms', (req, res) => {
+  const { amenities } = req.body;
+  // console.log('amenities', req.body);
+  postAmenities(amenities, res);
+});
+
+// update the amenities of one room
+app.patch('/rooms/:roomId', (req, res) => {
+  const { roomId } = req.params;
+  const { amenities } = req.body;
+  updateAmenities(roomId, amenities, res);
+});
+
+// delete a new room row in the table
+app.delete('/rooms/:roomId', (req, res) => {
+  const { roomId } = req.params;
+  deleteRoom(roomId, res);
 });
 
 app.listen(port, () => console.log('server is listening at port:' + port));

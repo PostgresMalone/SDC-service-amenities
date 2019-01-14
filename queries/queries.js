@@ -30,6 +30,7 @@ const getAmenities = async (roomId, res) => {
     res.status(404);
     res.send('The room searched doesn\'t exist!');
   } else {
+    res.status(200);
     res.send(rows[0]);
   }
 };
@@ -41,13 +42,15 @@ const postAmenities = async (amenities, res) => {
 
   const { rows } = await pool.query(`SELECT MAX(id) FROM rooms`);
   const nextId = Number(rows[0].max) + 1;
-  
+
   await pool.query(`INSERT INTO rooms (${columns}, id) VALUES (${values}, ${nextId})`)
     .then(() => {
+      res.status(201);
       res.send('Room row created succesfully!');
     })
     .catch((err) => {
       console.log('ERROR', err);
+      res.status(400);
       res.send('You are trying to insert a property which is not available!');
     });
 
@@ -66,9 +69,9 @@ const updateAmenities = async (roomId, amenities, res) => {
         res.status(404);
         res.send('The room you tried to update doesn\'t exist.');
       } else {
+        res.status(200);
         res.send('Room updated succesfully!');
       }
-      console.log(rowCount)
     })
     .catch((err) => {
       console.log('ERROR', err);
@@ -85,6 +88,7 @@ const deleteRoom = async (roomId, res) => {
     res.status(404);
     res.send('The room you tried to delete doesn\'t exist!');
   } else {
+    res.status(200);
     res.send('Room deleted succesfully!');
   }
   endConnection();

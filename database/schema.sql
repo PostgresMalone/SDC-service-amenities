@@ -1,27 +1,30 @@
 DROP TABLE IF EXISTS Rooms;
 
+
+  
+
 CREATE TABLE Rooms (
-  ID SERIAL NOT NULL PRIMARY KEY ,
-  airConditioning BOOLEAN NOT NULL,
-  bathroomEssentials BOOLEAN NOT NULL,
-  bedroomComforts BOOLEAN NOT NULL,
-  carbonMonoxideDetector BOOLEAN NOT NULL,
-  coffeeMaker BOOLEAN NOT NULL,
-  dishWasher BOOLEAN NOT NULL,
-  dryer BOOLEAN NOT NULL,
-  hairDryer BOOLEAN NOT NULL,
-  heating BOOLEAN NOT NULL,
-  indoorFireplace BOOLEAN NOT NULL,
-  iron BOOLEAN NOT NULL,
-  kitchen BOOLEAN NOT NULL,
-  petsAllowed BOOLEAN NOT NULL,
-  pool BOOLEAN NOT NULL,
+  id SERIAL PRIMARY KEY ,
+  "Air conditioning" BOOLEAN NOT NULL,
+  "Bathroom essentials" BOOLEAN NOT NULL,
+  "Bedroom comforts" BOOLEAN NOT NULL,
+  "Carbon monoxide detector" BOOLEAN NOT NULL,
+  "Coffee maker" BOOLEAN NOT NULL,
+  "Dish washer" BOOLEAN NOT NULL,
+  "Dryer" BOOLEAN NOT NULL,
+  "Hair dryer" BOOLEAN NOT NULL,
+  "Heating" BOOLEAN NOT NULL,
+  "Indoor fireplace" BOOLEAN NOT NULL,
+  "Iron" BOOLEAN NOT NULL,
+  "Kitchen" BOOLEAN NOT NULL,
+  "Pets allowed" BOOLEAN NOT NULL,
+  "Pool" BOOLEAN NOT NULL,
   roomname VARCHAR(255),
-  selfCheckIn BOOLEAN NOT NULL,
-  smokeDetector BOOLEAN NOT NULL,
-  TV BOOLEAN NOT NULL,
-  washer BOOLEAN NOT NULL,
-  wifi BOOLEAN NOT NULL
+  "Self check-in" BOOLEAN NOT NULL,
+  "Smoke detector" BOOLEAN NOT NULL,
+  "TV" BOOLEAN NOT NULL,
+  "Washer" BOOLEAN NOT NULL,
+  "Wifi" BOOLEAN NOT NULL
 );
 
 CREATE INDEX rooms_id_index ON Rooms (id);

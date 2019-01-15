@@ -21,18 +21,35 @@ const startConnectionToDB = () => {
   return result;
 };
 
-const getAmenities = async (roomId, res) => {
+const getAmenities = async (roomId, res, data) => {
   const { pool, endConnection } = startConnectionToDB();
   const { rows } = await pool.query(`SELECT * FROM rooms WHERE id = ${roomId}`);
-  console.log('rows', rows);
+  delete rows[0].id;
+  delete rows[0].roomname;
   endConnection();
   if (rows.length === 0) {
     res.status(404);
     res.send('The room searched doesn\'t exist!');
   } else {
     res.status(200);
-    res.send(rows[0]);
+    data.amenities = rows[0];
+    res.json(data);
   }
+};
+
+const getPicturesAmenities = async (data) => {
+  const { pool, endConnection } = startConnectionToDB();
+  const { rows } = (await pool.query(`SELECT * FROM amenities`));
+  const urls = {};
+  data.isSpecial = {};
+  for (let index in rows) {
+    const item = rows[index];
+    urls[item.amenityname] = item.url;
+    data.isSpecial[item.amenityname] = item.isspecial;
+  }
+  endConnection();
+  data.URLs = urls;
+  console.log('data', data);
 };
 
 const postAmenities = async (amenities, res) => {
@@ -96,6 +113,7 @@ const deleteRoom = async (roomId, res) => {
 
 module.exports = {
   getAmenities,
+  getPicturesAmenities,
   postAmenities,
   updateAmenities,
   deleteRoom

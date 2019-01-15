@@ -3,6 +3,7 @@ import $ from 'jquery';
 import ImagesList from './imagesList.jsx';
 import ImagesDefault from './imagesDefault.jsx';
 import styles from './styles.css.js';
+import _ from 'underscore';
 
 class Amenities extends React.Component {
   constructor(props) {
@@ -28,7 +29,16 @@ class Amenities extends React.Component {
     $.ajax({
       url: `${document.URL}/amenities/`
     }).done((data) => {
-      var total = { ...data.special, ...data.essential};
+      data.special = {};
+      data.essential = {};
+      for (let amenity in data.amenities) {
+        if (data.isSpecial[amenity]) {
+          data.special[amenity] = data.amenities[amenity];
+        } else {
+          data.essential[amenity] = data.amenities[amenity];
+        }
+      }
+      var total = { ...data.special, ...data.essential };
       var count = 0;
       for (var key in total) {
         total[key] ? count++ : null;

@@ -1,10 +1,11 @@
 const { Pool } = require('pg');
+const { user, host, database, password} = require('../queries/config.js');
 
 const pool = new Pool({
-  user: 'lucasparreiradefariaborges',
-  host: 'localhost',
-  database: 'ROOMSAMENITIES',
-  password: ''
+  user,
+  host,
+  database,
+  password
 });
 
 pool.on('error', (err) => {

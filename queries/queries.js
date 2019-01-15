@@ -1,11 +1,12 @@
 const { Pool } = require('pg');
+const { user, host, database, password} = require('./config.js');
 
 const startConnectionToDB = () => {
   const pool = new Pool({
-    user: 'lucasparreiradefariaborges',
-    host: 'localhost',
-    database: 'ROOMSAMENITIES',
-    password: ''
+    user,
+    host,
+    database,
+    password
   });
   
   pool.on('error', (err) => {
@@ -73,6 +74,31 @@ const postAmenities = async (amenities, res) => {
 
   endConnection();
 };
+
+// const amenities = {
+//   "\"Air conditioning\"": true,
+//   "\"Bathroom essentials\"": true,
+//   "\"Bedroom comforts\"": true,
+//   "\"Carbon monoxide detector\"": true,
+//   "\"Coffee maker\"": true,
+//   "\"Dish washer\"": true,
+//   "\"Dryer\"": true,
+//   "\"Hair dryer\"": true,
+//   "\"Heating\"": true,
+//   "\"Indoor fireplace\"": true,
+//   "\"Iron\"": true,
+//   "\"Kitchen\"": true,
+//   "\"Pets allowed\"": true,
+//   "\"Pool\"": true,
+//   "\"roomname\"": "\'roomUpdated1234\'",
+//   "\"Self check-in\"": true,
+//   "\"Smoke detector\"": true,
+//   "\"TV\"": true,
+//   "\"Washer\"": true,
+//   "\"Wifi\"": true
+// }
+
+// postAmenities(amenities);
 
 const updateAmenities = async (roomId, amenities, res) => {
   const { pool, endConnection } = startConnectionToDB();

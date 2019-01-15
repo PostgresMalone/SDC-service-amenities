@@ -32,3 +32,6 @@ dist/
 
 # data files
 data/*
+
+# data base credentials
+*/config.js

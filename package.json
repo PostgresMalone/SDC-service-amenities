@@ -24,7 +24,7 @@
     "saveDataPostgresAuxiliar": "node ./database/dataSaverAuxiliar.js",
     "schemaCassandra": "cqlsh -f database/schema.cql",
     "saveDataCassandra": "./database/loopDataSaver.sh",
-    "setUpDb": "npm run generateData && npm run schemaPostgres && npm run saveDataPostgres && npm run schemaCassandra && npm run saveDataCassandra"
+    "setUpDb": "npm run generateData && npm run schemaPostgres && npm run saveDataPostgres && npm run schemaPostgresAuxiliar && npm run saveDataPostgresAuxiliar"
   },
   "dependencies": {
     "bluebird": "^3.5.3",

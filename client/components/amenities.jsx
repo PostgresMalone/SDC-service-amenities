@@ -3,7 +3,7 @@ import $ from 'jquery';
 import ImagesList from './imagesList.jsx';
 import ImagesDefault from './imagesDefault.jsx';
 import styles from './styles.css.js';
-import _ from 'underscore';
+// import _ from 'underscore';
 
 class Amenities extends React.Component {
   constructor(props) {

@@ -1,8 +1,5 @@
 DROP TABLE IF EXISTS Rooms;
 
-
-  
-
 CREATE TABLE Rooms (
   id SERIAL PRIMARY KEY ,
   "Air conditioning" BOOLEAN NOT NULL,

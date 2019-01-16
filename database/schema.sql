@@ -24,5 +24,4 @@ CREATE TABLE Rooms (
   "Wifi" BOOLEAN NOT NULL
 );
 
-CREATE INDEX rooms_id_index ON Rooms (id);
 CREATE INDEX rooms_roomname_index ON Rooms (roomname);

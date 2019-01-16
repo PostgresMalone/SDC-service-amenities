@@ -57,6 +57,7 @@ const postAmenities = async (amenities, res) => {
   const { pool, endConnection } = startConnectionToDB();
   const columns = Object.keys(amenities).join(', ');
   const values = Object.values(amenities).join(', ');
+  // uncomment the following lines if the DB is already seeded
   // const { rows } = await pool.query(`SELECT MAX(id) FROM rooms`);
   // const nextId = Number(rows[0].max) + 1;
 

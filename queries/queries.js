@@ -57,11 +57,11 @@ const postAmenities = async (amenities, res) => {
   const { pool, endConnection } = startConnectionToDB();
   const columns = Object.keys(amenities).join(', ');
   const values = Object.values(amenities).join(', ');
+  // uncomment the following lines if the DB is already seeded
+  // const { rows } = await pool.query(`SELECT MAX(id) FROM rooms`);
+  // const nextId = Number(rows[0].max) + 1;
 
-  const { rows } = await pool.query(`SELECT MAX(id) FROM rooms`);
-  const nextId = Number(rows[0].max) + 1;
-
-  await pool.query(`INSERT INTO rooms (${columns}, id) VALUES (${values}, ${nextId})`)
+  await pool.query(`INSERT INTO rooms (${columns}) VALUES (${values})`)
     .then(() => {
       res.status(201);
       res.send('Room row created succesfully!');
@@ -74,31 +74,6 @@ const postAmenities = async (amenities, res) => {
 
   endConnection();
 };
-
-// const amenities = {
-//   "\"Air conditioning\"": true,
-//   "\"Bathroom essentials\"": true,
-//   "\"Bedroom comforts\"": true,
-//   "\"Carbon monoxide detector\"": true,
-//   "\"Coffee maker\"": true,
-//   "\"Dish washer\"": true,
-//   "\"Dryer\"": true,
-//   "\"Hair dryer\"": true,
-//   "\"Heating\"": true,
-//   "\"Indoor fireplace\"": true,
-//   "\"Iron\"": true,
-//   "\"Kitchen\"": true,
-//   "\"Pets allowed\"": true,
-//   "\"Pool\"": true,
-//   "\"roomname\"": "\'roomUpdated1234\'",
-//   "\"Self check-in\"": true,
-//   "\"Smoke detector\"": true,
-//   "\"TV\"": true,
-//   "\"Washer\"": true,
-//   "\"Wifi\"": true
-// }
-
-// postAmenities(amenities);
 
 const updateAmenities = async (roomId, amenities, res) => {
   const { pool, endConnection } = startConnectionToDB();

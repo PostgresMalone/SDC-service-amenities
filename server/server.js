@@ -1,3 +1,4 @@
+require('newrelic');
 const Express = require('express');
 const BodyParser = require('body-parser');
 const Path = require('path');
@@ -44,12 +45,12 @@ app.get('//amenities/', async (req, res) => {
 // get amenities for one room
 app.get('/rooms/:roomId', (req, res) => {
   const { roomId } = req.params;
-  getAmenities(roomId, res);
+  getAmenities(roomId, res, {});
 });
 
 // create a new room row in the table
 app.post('/rooms', (req, res) => {
-  const { amenities } = req.body;
+  const amenities = req.body;
   postAmenities(amenities, res);
 });
 
@@ -69,26 +70,3 @@ app.delete('/rooms/:roomId', (req, res) => {
 app.listen(port, () => console.log('server is listening at port:' + port));
 
 module.exports.app = app;
-
-// {
-//   "airconditioning": true,
-//   "bathroomessentials": true,
-//   "bedroomcomforts": true,
-//   "carbonmonoxidedetector": true,
-//   "coffeemaker": true,
-//   "dishwasher": true,
-//   "dryer": true,
-//   "hairdryer": true,
-//   "heating": true,
-//   "indoorfireplace": true,
-//   "iron": true,
-//   "kitchen": true,
-//   "petsallowed": true,
-//   "pool": true,
-//   "roomname": "roomUpdated",
-//   "selfcheckin": true,
-//   "smokedetector": true,
-//   "tv": true,
-//   "washer": true,
-//   "wifi": true
-// }

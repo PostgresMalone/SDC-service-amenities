@@ -7,5 +7,4 @@ CREATE TABLE Amenities (
   isSpecial BOOLEAN NOT NULL
 );
 
-CREATE INDEX amenities_id_index ON Amenities (id);
 CREATE INDEX amenities_amenityname_index ON Amenities (amenityname);

@@ -1,5 +1,5 @@
-import http from "../../Library/Caches/typescript/2.9/node_modules/@types/k6/http";
-import { check, sleep } from "../../Library/Caches/typescript/2.9/node_modules/@types/k6";
+import http from "k6/http";
+import { check, sleep } from "k6";
 
 export let options = {
   vus: 100,

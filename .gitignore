@@ -35,4 +35,4 @@ data/*
 
 # data base and new relic credentials
 */config.js
-./config.js
+config.js

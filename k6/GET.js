@@ -7,6 +7,12 @@ export let options = {
 };
 
 export default function() {
+  // 80% of the time
+  if (Math.random() > 0.2) {
+
+  } else {
+
+  }
   const roomId = Math.floor(Math.random() * 10000000) + 1;
   check(http.get(`http://localhost:4420/rooms/${roomId}`), {
     'status was 200': (r) => r.status === 200

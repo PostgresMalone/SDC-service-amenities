@@ -1,5 +1,26 @@
 const { Pool } = require('pg');
-const { user, host, database, password} = require('./config.js');
+const redis = require("redis");
+const bluebird = require('bluebird');
+const { user, host, database, password } = require('./config.js');
+
+bluebird.promisifyAll(redis.RedisClient.prototype);
+bluebird.promisifyAll(redis.Multi.prototype);
+
+const startConnectionToRedis = () => {
+  const client = redis.createClient();
+
+  client.on("error", function (err) {
+    console.log("Error " + err);
+  });
+
+  const result = {};
+  result.client = client;
+  result.quitConnection = () => {
+    client.quit();
+  };
+
+  return result;
+};
 
 const startConnectionToDB = () => {
   const pool = new Pool({
@@ -23,6 +44,16 @@ const startConnectionToDB = () => {
 };
 
 const getAmenities = async (roomId, res, data) => {
+  const { client, quitConnection } = startConnectionToRedis();
+  const redisResult = await client.getAsync(roomId);
+
+  if (redisResult) {
+    quitConnection();
+    res.status(200);
+    res.json(JSON.parse(redisResult));
+    return;
+  }
+
   const { pool, endConnection } = startConnectionToDB();
   const { rows } = await pool.query(`SELECT * FROM rooms WHERE id = ${roomId}`);
   delete rows[0].id;
@@ -35,7 +66,10 @@ const getAmenities = async (roomId, res, data) => {
     res.status(200);
     data.amenities = rows[0];
     res.json(data);
+    await client.setAsync(roomId, JSON.stringify(data));
   }
+
+  quitConnection();
 };
 
 const getPicturesAmenities = async (data) => {

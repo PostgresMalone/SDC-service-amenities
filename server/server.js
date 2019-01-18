@@ -33,6 +33,10 @@ app.get('/', (req, res) => {
   res.end(htmlTemplate(reactDOM));
 });
 
+app.get('/bundle.js', (req, res) => {
+  res.sendFile(Path.resolve(__dirname + '/../public/bundle.js'));
+});
+
 app.get('/:Id', (req, res) => {
   res.sendFile(Path.resolve(__dirname + '/../public/index.html'));
 });
@@ -85,10 +89,10 @@ const htmlTemplate = (reactDOM) => {
     </head>
     <body>
       <div id="Amenities">${reactDOM}</div>
+      <script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/sdc-amenities-service-bundle/bundle.js"></script>
       </body>
       </html>
       `;
     };
     
     // module.exports.app = app;
-    // <script type="text/javascript" src="bundle.js"></script>

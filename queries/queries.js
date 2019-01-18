@@ -46,11 +46,11 @@ const startConnectionToDB = () => {
 const getAmenities = async (roomId, res, data) => {
   const { client, quitConnection } = startConnectionToRedis();
   const redisResult = await client.getAsync(roomId);
-
   if (redisResult) {
     quitConnection();
     res.status(200);
-    res.json(JSON.parse(redisResult));
+    data.amenities = JSON.parse(redisResult).amenities;
+    res.json(data);
     return;
   }
 
@@ -84,7 +84,6 @@ const getPicturesAmenities = async (data) => {
   }
   endConnection();
   data.URLs = urls;
-  console.log('data', data);
 };
 
 const postAmenities = async (amenities, res) => {

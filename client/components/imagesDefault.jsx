@@ -23,4 +23,3 @@ const imagesDefault = (props) => {
   );
 };
 export default imagesDefault;
-

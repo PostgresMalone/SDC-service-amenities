@@ -26,7 +26,7 @@ class Amenities extends React.Component {
   componentDidMount() {
     var that = this;
     $.ajax({
-      url: `${document.URL}/amenities/`
+      url: `${document.URL}/amenities`
     }).done((data) => {
       data.special = {};
       data.essential = {};

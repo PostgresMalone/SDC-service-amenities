@@ -24,7 +24,10 @@
     "saveDataPostgresAuxiliar": "node ./database/dataSaverAuxiliar.js",
     "schemaCassandra": "cqlsh -f database/schema.cql",
     "saveDataCassandra": "./database/loopDataSaver.sh",
-    "setUpDb": "npm run generateData && npm run schemaPostgres && npm run saveDataPostgres && npm run schemaPostgresAuxiliar && npm run saveDataPostgresAuxiliar"
+    "setUpDb": "npm run generateData && npm run schemaPostgres && npm run saveDataPostgres && npm run schemaPostgresAuxiliar && npm run saveDataPostgresAuxiliar",
+    "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development -w",
+    "dev:start": "nodemon ./server-build/index.js",
+    "dev": "npm-run-all --parallel build dev:*"
   },
   "dependencies": {
     "bluebird": "^3.5.3",
@@ -36,13 +39,12 @@
     "jquery": "^3.3.1",
     "mongoose": "^5.4.0",
     "node-mocks-http": "^1.7.3",
-    "nodemon": "^1.18.9",
     "pg": "^7.7.1",
     "pug": "^2.0.3",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "redis": "^2.8.0",
-    "request": "^2.88.0",
+    "request": "^2.79.0",
     "sequelize": "^4.42.0",
     "underscore": "^1.9.1"
   },
@@ -53,12 +55,17 @@
     "@babel/preset-es2015": "^7.0.0-beta.53",
     "@babel/preset-react": "^7.0.0",
     "artillery": "^1.6.0-26",
+    "babel-core": "^6.26.3",
     "babel-jest": "^23.6.0",
-    "babel-loader": "^8.0.4",
+    "babel-loader": "^8.0.5",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-react-app": "^7.0.0",
+    "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.2.0",
     "compression-webpack-plugin": "^2.0.0",
     "enzyme": "^3.8.0",
@@ -69,10 +76,13 @@
     "jest": "^23.6.0",
     "mocha": "^5.2.0",
     "newrelic": "^5.0.0",
+    "nodemon": "^1.18.9",
+    "npm-run-all": "^4.1.5",
     "react-test-renderer": "^16.7.0",
     "regenerator-runtime": "^0.13.1",
-    "webpack": "^4.28.0",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.14"
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-node-externals": "^1.7.2"
   }
 }

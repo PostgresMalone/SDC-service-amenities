@@ -7,7 +7,7 @@ const Partials = require('express-partials');
 const Promise = require('bluebird');
 const React = require('react');
 const { renderToString } = require('react-dom/server');
-const Amenities = require('../client/components/amenities.jsx');
+import Amenities from '../client/components/amenities.jsx';
 const fs = require('fs');
 const path = require('path');
 // const db = require('../database/db.js');
@@ -29,21 +29,8 @@ app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
-  // res.sendFile(Path.resolve(__dirname + '/../public/index.html'));
-  const reactDOM = renderToString(<Amenities/>);
-  // const indexFile = path.resolve('../public/index.html');
-  // fs.readFile('../public/index.html', 'utf8', (err, data) => {
-  //   if (err) {
-  //     console.error('Something went wrong:', err);
-  //     return res.status(500).send('Oops, better luck next time!');
-  //   }
-  //   res.writeHead( 200, { "Content-Type": "text/html" });
-  //   return res.send(
-  //     data.replace('<div id="Amenities"></div>', `<div id="Amenities">${reactDOM}</div>`)
-  //   );
-  // });
+  const reactDOM = renderToString(<Amenities />);
   res.end(htmlTemplate(reactDOM));
-  // res.end('<h1>Hello World!</h1>');
 });
 
 app.get('/:Id', (req, res) => {
@@ -98,10 +85,10 @@ const htmlTemplate = (reactDOM) => {
     </head>
     <body>
       <div id="Amenities">${reactDOM}</div>
-      <script type="text/javascript" src="bundle.js"></script>
-    </body>
-  </html>
-  `;
-};
-
-module.exports.app = app;
+      </body>
+      </html>
+      `;
+    };
+    
+    // module.exports.app = app;
+    // <script type="text/javascript" src="bundle.js"></script>

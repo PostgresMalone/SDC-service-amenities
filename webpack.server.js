@@ -9,8 +9,8 @@ module.exports = {
   externals: [nodeExternals()],
 
   output: {
-    path: path.resolve('server-build'),
-    filename: 'index.js'
+    path: path.resolve('server'),
+    filename: 'bundle.js'
   },
 
   module: {

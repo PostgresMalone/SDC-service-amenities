@@ -13,25 +13,25 @@ pool.on('error', (err) => {
 });
 
 const amenities = {
-  'Air conditioning': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/air-conditioning.png',
-  'Bathroom essentials': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/essentials.png',
-  'Bedroom comforts': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/extra-pillows-blankets.png',
-  'Carbon monoxide detector': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/co2-detector.png',
-  'Coffee maker': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/coffee-maker.png',
-  'Dish washer': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/dishwasher.png',
-  'Dryer': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/dryer.png',
-  'Hair dryer': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/hair-dryer.png',
-  'Heating': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/heating.png',
-  'Indoor fireplace': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/indoor-fireplace.png',
-  'Iron': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/iron.png',
-  'Kitchen': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/kitchen.png',
-  'Pets allowed': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/pets-allowed.png',
-  'Pool': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/pool.png',
-  'Self check-in': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/self-check-in.png',
-  'Smoke detector': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/smoke-detector.png',
-  'TV': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/tv.png',
-  'Washer': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/washer.png',
-  'Wifi': 'https://s3-us-west-1.amazonaws.com/barebnbbucket/wireless-internet.png'
+  'Air conditioning': 'https://s3-us-west-1.amazonaws.com/images-amenities/air-conditioning.png',
+  'Bathroom essentials': 'https://s3-us-west-1.amazonaws.com/images-amenities/essentials.png',
+  'Bedroom comforts': 'https://s3-us-west-1.amazonaws.com/images-amenities/extra-pillows-blankets.png',
+  'Carbon monoxide detector': 'https://s3-us-west-1.amazonaws.com/images-amenities/co2-detector.png',
+  'Coffee maker': 'https://s3-us-west-1.amazonaws.com/images-amenities/coffee-maker.png',
+  'Dish washer': 'https://s3-us-west-1.amazonaws.com/images-amenities/dishwasher.png',
+  'Dryer': 'https://s3-us-west-1.amazonaws.com/images-amenities/dryer.png',
+  'Hair dryer': 'https://s3-us-west-1.amazonaws.com/images-amenities/hair-dryer.png',
+  'Heating': 'https://s3-us-west-1.amazonaws.com/images-amenities/heating.png',
+  'Indoor fireplace': 'https://s3-us-west-1.amazonaws.com/images-amenities/indoor-fireplace.png',
+  'Iron': 'https://s3-us-west-1.amazonaws.com/images-amenities/iron.png',
+  'Kitchen': 'https://s3-us-west-1.amazonaws.com/images-amenities/kitchen.png',
+  'Pets allowed': 'https://s3-us-west-1.amazonaws.com/images-amenities/pets-allowed.png',
+  'Pool': 'https://s3-us-west-1.amazonaws.com/images-amenities/pool.png',
+  'Self check-in': 'https://s3-us-west-1.amazonaws.com/images-amenities/self-check-in.png',
+  'Smoke detector': 'https://s3-us-west-1.amazonaws.com/images-amenities/smoke-detector.png',
+  'TV': 'https://s3-us-west-1.amazonaws.com/images-amenities/tv.png',
+  'Washer': 'https://s3-us-west-1.amazonaws.com/images-amenities/washer.png',
+  'Wifi': 'https://s3-us-west-1.amazonaws.com/images-amenities/wireless-internet.png'
 };
 
 const saveData = async () => {

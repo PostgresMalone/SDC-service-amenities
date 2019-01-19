@@ -26,7 +26,7 @@
     "saveDataCassandra": "./database/loopDataSaver.sh",
     "setUpDb": "npm run generateData && npm run schemaPostgres && npm run saveDataPostgres && npm run schemaPostgresAuxiliar && npm run saveDataPostgresAuxiliar",
     "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development -w",
-    "dev:start": "nodemon ./server-build/index.js",
+    "dev:start": "nodemon ./server/bundle.js",
     "dev": "npm-run-all --parallel build dev:*"
   },
   "dependencies": {

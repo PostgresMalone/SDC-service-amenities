@@ -34,7 +34,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/bundle.js', (req, res) => {
-  res.sendFile(Path.resolve(__dirname + '/../public/bundle.js'));
+  res.sendFile('/otherfile.js');
+  // res.sendFile(Path.resolve(__dirname + '/../public/index.html'));
 });
 
 app.get('/:Id', (req, res) => {
@@ -83,15 +84,15 @@ app.listen(port, () => console.log('server is listening at port:' + port));
 
 const htmlTemplate = (reactDOM) => {
   return `
-<!DOCTYPE html>
+  <!DOCTYPE html>
   <html>
     <head>
     </head>
     <body>
       <div id="Amenities">${reactDOM}</div>
       <script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/sdc-amenities-service-bundle/bundle.js"></script>
-      </body>
-      </html>
+    </body>
+  </html>
       `;
     };
     
